@@ -92,7 +92,8 @@ local t = Def.ActorFrame{
 			elseif sort == "SortOrder_Group" and song ~= nil then
 				self:settext(song:GetGroupName()) 
 			else
-				self:settext(song:GetGroupName())
+				local musicwheel = SCREENMAN:GetTopScreen():GetMusicWheel();
+				self:settext(musicwheel:GetSelectedSection())
 			end
 
 		end;
