@@ -21,7 +21,7 @@ return Def.ActorFrame{
 				self:valign(0.5)
 			end;
 			self:settext(THEME:GetString("Grade",ToEnumShortString(sGrade)) or "")
-			self:diffuse(getGradeColor(sGrade))
+			--self:diffuse(getGradeColor(sGrade))
         end;
 	};
 	--[[
