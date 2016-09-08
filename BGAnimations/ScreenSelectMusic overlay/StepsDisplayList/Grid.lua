@@ -1,6 +1,6 @@
 local GridColumns = 20
 local GridRows = 5
-local GridZoomX = IsUsingWideScreen() and 0.435 or 0.39
+local GridZoomX = 0.39
 local BlockZoomY = 0.275
 local StepsToDisplay, SongOrCourse, StepsOrTrails
 
@@ -44,7 +44,7 @@ local t = Def.ActorFrame{
 				end
 			end
 		else
-			StepsOrTrails, StepsToDisplay = nil, nil
+			StepsOrTrails, StepsToDisplay = nil
 			self:playcommand("Unset")
 		end
 	end,
@@ -57,9 +57,6 @@ local t = Def.ActorFrame{
 		InitCommand=function(self)
 			self:diffuse(color("#1e282f"))
 			self:zoomto(320, 96)
-			if ThemePrefs.Get("RainbowMode") then
-				self:diffusealpha(0.75)
-			end
 		end
 	},
 }
@@ -67,7 +64,7 @@ local t = Def.ActorFrame{
 
 local Grid = Def.ActorFrame{
 	Name="Grid",
-	InitCommand=cmd(horizalign, left; vertalign, top; xy, 8, -52 ),
+	InitCommand=cmd(horizalign, left; vertalign, top; xy, 30, -52 ),
 }
 
 
@@ -124,14 +121,15 @@ for RowNumber=1,GridRows do
 
 	Grid[#Grid+1] = Def.BitmapText{
 		Name="Meter_"..RowNumber,
-		Font="_wendy small",
+		Font="Common normal",
 
 		InitCommand=function(self)
 			local height = self:GetParent():GetChild("Blocks_"..RowNumber):GetHeight()
 			self:horizalign(right)
 			self:y(RowNumber * height * BlockZoomY)
-			self:x( IsUsingWideScreen() and -140 or -126 )
-			self:zoom(0.3)
+			self:x( IsUsingWideScreen() and -140 or -130 )
+			self:maxwidth(30)
+			self:zoom(0.9)
 		end,
 		SetCommand=function(self, params)
 

@@ -22,11 +22,8 @@ local t = Def.ActorFrame{
 		Def.Quad{
 			InitCommand=function(self)
 				self:diffuse(color("#1e282f"))
-					:zoomto( IsUsingWideScreen() and 320 or 310, 48 )
-
-				if ThemePrefs.Get("RainbowMode") then
-					self:diffusealpha(0.75)
-				end
+				self:zoomtowidth( IsUsingWideScreen() and 320 or 310 )
+				self:zoomtoheight( 48 )
 			end
 		},
 
@@ -37,7 +34,7 @@ local t = Def.ActorFrame{
 			-- Artist Label
 			LoadFont("_miso")..{
 				Text="ARTIST",
-				InitCommand=cmd(horizalign, right; y, -12),
+				InitCommand=cmd(horizalign, right; y, -12;zoom, 0.8),
 				OnCommand=cmd(diffuse,color("0.5,0.5,0.5,1"))
 			},
 
@@ -59,7 +56,7 @@ local t = Def.ActorFrame{
 
 			-- BPM Label
 			LoadFont("_miso")..{
-				InitCommand=cmd(horizalign, right; NoStroke; y, 8),
+				InitCommand=cmd(horizalign, right; NoStroke; y, 8;zoom, 0.8),
 				SetCommand=function(self)
 					self:diffuse(0.5,0.5,0.5,1)
 					self:settext("BPM")
@@ -84,7 +81,7 @@ local t = Def.ActorFrame{
 
 			-- Song Length Label
 			LoadFont("_miso")..{
-				InitCommand=cmd(horizalign, right; y, 8; x, _screen.w/4.5),
+				InitCommand=cmd(horizalign, right; y, 8; x, _screen.w/4.5;zoom, 0.8),
 				SetCommand=function(self)
 					local song = GAMESTATE:GetCurrentSong()
 					self:diffuse(0.5,0.5,0.5,1)
@@ -162,9 +159,9 @@ local t = Def.ActorFrame{
 
 					if song then
 						if song:IsLong() then
-							self:settext("COUNTS AS 2 ROUNDS")
+							self:settext("LONG")
 						elseif song:IsMarathon() then
-							self:settext("COUNTS AS 3 ROUNDS")
+							self:settext("MARATHON")
 						else
 							self:settext("")
 						end

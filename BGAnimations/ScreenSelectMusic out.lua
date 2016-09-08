@@ -1,5 +1,5 @@
 return Def.ActorFrame{
-	InitCommand=function(self) self:draworder(200) end,
+	InitCommand=cmd(draworder, 200),
 	
 	Def.Quad{
 		InitCommand=cmd(diffuse,Color.Black; FullScreen; diffusealpha,0 ),

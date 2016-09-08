@@ -7,8 +7,6 @@ local ColorSelected = false
 
 local NumHeartsToDraw = IsUsingWideScreen() and 11 or 7
 
-local image = string.sub(ThemePrefs.Get("VisualTheme"),1,-2)
-
 -- this handles user input
 local function input(event)
 	if not event.PlayerNumber or not event.button then
@@ -58,7 +56,7 @@ local wheel_item_mt = {
 				end
 			}
 
-			af[#af+1] = LoadActor(THEME:GetPathG("", image .. ".png"))..{
+			af[#af+1] = LoadActor(THEME:GetPathG("", "heart.png"))..{
 				InitCommand=function(subself)
 					self.heart = subself
 					subself:diffusealpha(0)

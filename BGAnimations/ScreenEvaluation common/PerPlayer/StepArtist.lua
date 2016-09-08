@@ -14,12 +14,12 @@ else
 end
 
 
-return LoadFont("_miso")..{
+return LoadFont("Common Normal")..{
 	Text=stepartist,
-	InitCommand=cmd(zoom, 0.7; xy, 115,_screen.cy-80 ),
+	InitCommand=cmd(zoom, 0.7; xy, 360,_screen.cy-125 ),
 	OnCommand=function(self)
 		if player == PLAYER_1 then
-			self:x( self:GetX() * -1 )
+			self:x( self:GetX() * 1 )
 			self:horizalign(left)
 		else
 			self:horizalign(right)

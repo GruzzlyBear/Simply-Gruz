@@ -3,7 +3,7 @@ local pn = ToEnumShortString(player)
 local p = PlayerNumber:Reverse()[player]
 
 local rv
-local zoom_factor = WideScale(0.8,0.9)
+local zoom_factor = 0.9
 
 local labelX_col1 = WideScale(-70,-90)
 local dataX_col1  = WideScale(-75,-96)
@@ -131,19 +131,17 @@ local pd = Def.ActorFrame{
 		end
 
 		self:y(_screen.h/2 + 5)
+		self:queuecommand("Set")
 	end,
 
 	PlayerJoinedMessageCommand=function(self, params)
 
 		if player==params.Player then
 			self:visible(true)
-				:zoom(0):croptop(0):bounceend(0.3):zoom(1)
-				:playcommand("Set")
-		end
-	end,
-	PlayerUnjoinedMessageCommand=function(self, params)
-		if player==params.Player then
-			self:accelerate(0.3):croptop(1):sleep(0.01):zoom(0)
+			self:zoom(0)
+			self:bounceend(0.3)
+			self:zoom(1)
+			self:playcommand("Set")
 		end
 	end,
 
@@ -172,10 +170,9 @@ pd[#pd+1] = Def.Quad{
 	InitCommand=cmd(zoomto, _screen.w/2-10, _screen.h/8; y, _screen.h/3 + 15.33 ),
 	SetCommand=function(self, params)
 		if GAMESTATE:IsHumanPlayer(player) then
-			local StepsOrTrail = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentTrail(player) or GAMESTATE:GetCurrentSteps(player)
-
-			if StepsOrTrail then
-				local difficulty = StepsOrTrail:GetDifficulty()
+			local steps = GAMESTATE:GetCurrentSteps(player)
+			if steps then
+				local difficulty = steps:GetDifficulty()
 				self:diffuse( DifficultyColor(difficulty) )
 			else
 				self:diffuse( PlayerColor(player) )
@@ -234,31 +231,30 @@ end
 pd[#pd+1] = Def.BitmapText{
 	Font="_wendy small",
 	Name="DifficultyMeter",
-	InitCommand=cmd(horizalign, right; diffuse, Color.Black; xy, _screen.w/4 - 10, _screen.h/2 - 65; queuecommand, "Set"),
+	InitCommand=cmd(horizalign, right; diffuse, Color.Black; xy, _screen.w/4 - 100000000000, _screen.h/2 - 65; queuecommand, "Set"),
 	SetCommand=function(self)
-		local SongOrCourse = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse()) or GAMESTATE:GetCurrentSong()
-		if not SongOrCourse then
+		local song = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse()) or GAMESTATE:GetCurrentSong()
+		if not song then
 			self:settext("")
 		else
-			local StepsOrTrail = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentTrail(player) or GAMESTATE:GetCurrentSteps(player)
-			local meter = StepsOrTrail and StepsOrTrail:GetMeter()			
-			self:settext( meter and meter or  "?" )
+			local steps = GAMESTATE:GetCurrentSteps(player)
+			self:settext( steps and steps:GetMeter() or  "?" )
 		end
 	end
 }
 
 --MACHINE high score
 pd[#pd+1] = Def.BitmapText{
-	Font="_miso",
+	Font="_big",
 	Name="MachineHighScore",
-	InitCommand=cmd(x, highscoreX; y, 156; zoom, zoom_factor; diffuse, Color.Black; halign, 1 )
+	InitCommand=cmd(x, highscoreX+80; y, 173; zoom, 0.9; diffuse, Color.Black; horizalign, right )
 }
 
 --MACHINE highscore name
 pd[#pd+1] = Def.BitmapText{
 	Font="_miso",
 	Name="MachineHighScoreName",
-	InitCommand=cmd(x, highscorenameX; y, 156; zoom, zoom_factor; diffuse, Color.Black; halign, 1; maxwidth, 60)
+	InitCommand=cmd(x, highscorenameX; y, 90000; zoom, zoom_factor; diffuse, Color.Black; halign, 1; maxwidth, 60)
 }
 
 
@@ -266,14 +262,14 @@ pd[#pd+1] = Def.BitmapText{
 pd[#pd+1] = Def.BitmapText{
 	Font="_miso",
 	Name="PlayerHighScore",
-	InitCommand=cmd(x, highscoreX; y, 176; zoom, zoom_factor; diffuse, Color.Black; halign, 1 )
+	InitCommand=cmd(x, highscoreX; y, 90000; zoom, zoom_factor; diffuse, Color.Black; halign, 1 )
 }
 
 --PLAYER PROFILE highscore name
 pd[#pd+1] = Def.BitmapText{
 	Font="_miso",
 	Name="PlayerHighScoreName",
-	InitCommand=cmd(x, highscorenameX; y, 176; zoom, zoom_factor; diffuse, color("0,0,0,1"); halign, 1)
+	InitCommand=cmd(x, highscorenameX; y, 90000; zoom, zoom_factor; diffuse, color("0,0,0,1"); halign, 1)
 }
 
 return pd

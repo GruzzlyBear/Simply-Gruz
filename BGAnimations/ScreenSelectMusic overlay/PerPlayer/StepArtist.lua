@@ -16,15 +16,6 @@ return Def.ActorFrame{
 			self:queuecommand("Appear" .. pn)
 		end
 	end,
-	PlayerUnjoinedMessageCommand=function(self, params)
-		if params.Player == player then
-			self:ease(0.5, 275):addy(scale(p,0,1,1,-1) * 30):diffusealpha(0)
-		end
-	end,
-
-	-- depending on the value of pn, this will either become
-	-- an AppearP1Command or an AppearP2Command when the screen initializes
-	["Appear"..pn.."Command"]=function(self) self:visible(true):ease(0.5, 275):addy(scale(p,0,1,-1,1) * 30) end,
 
 	InitCommand=function(self)
 		self:visible( false ):halign( p )
@@ -45,18 +36,19 @@ return Def.ActorFrame{
 		end
 	end,
 
+	-- depending on the value of pn, this will either become
+	-- an AppearP1Command or an AppearP2Command when the screen initializes
+	["Appear" .. pn .. "Command"]=cmd(visible, true; ease, 0.5, 275; addy, scale(p,0,1,-1,1) * 30),
+
 	-- colored background quad
 	Def.Quad{
 		Name="BackgroundQuad",
 		InitCommand=cmd(zoomto, 175, _screen.h/28; x, 113; diffuse, DifficultyIndexColor(1) ),
 		StepsHaveChangedCommand=function(self)
-			local StepsOrTrail = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentTrail(player) or GAMESTATE:GetCurrentSteps(player)
-
-			if StepsOrTrail then
-				local difficulty = StepsOrTrail:GetDifficulty()
-				self:diffuse( DifficultyColor(difficulty) )
-			else
-				self:diffuse( PlayerColor(player) )
+			local steps = GAMESTATE:GetCurrentSteps(player)
+			if steps then
+				local difficulty = steps:GetDifficulty()
+				self:diffuse(DifficultyColor(difficulty))
 			end
 		end
 	},
@@ -64,23 +56,31 @@ return Def.ActorFrame{
 	--STEPS label
 	Def.BitmapText{
 		Font="_miso",
-		OnCommand=cmd(diffuse, color("0,0,0,1"); horizalign, left; x, 30; settext, Screen.String("STEPS"))
+		OnCommand=cmd(diffuse, color("0,0,0,1"); horizalign, left; x, 30; settext, "STEPS"; zoom, 0.7)
 	},
 
 	--stepartist text
 	Def.BitmapText{
-		Font="_miso",
+		Font="Common Normal",
 		InitCommand=cmd(diffuse,color("#1e282f"); horizalign, left; x, 75; maxwidth, 115),
 		StepsHaveChangedCommand=function(self)
 
-			local SongOrCourse = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse() or GAMESTATE:GetCurrentSong()
-			local StepsOrCourse = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse() or GAMESTATE:GetCurrentSteps(player)
+			local song = GAMESTATE:GetCurrentSong()
+			local course = GAMESTATE:GetCurrentCourse()
+			if song == nil and course == nil then
+				self:visible( false )
+				return
+			else
+				self:visible( true )
+			end
 
-			if not SongOrCourse then
+			local steps = GAMESTATE:GetCurrentSteps(player)
+
+			if steps then
+				local stepartist = steps:GetAuthorCredit()
+				self:settext(stepartist ~= nil and stepartist or "")
+			else
 				self:settext("")
-			elseif StepsOrCourse then
-				local stepartist = GAMESTATE:IsCourseMode() and StepsOrCourse:GetScripter() or StepsOrCourse:GetAuthorCredit()
-				self:settext(stepartist and stepartist or "")
 			end
 		end
 	}

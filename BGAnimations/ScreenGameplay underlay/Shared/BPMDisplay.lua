@@ -28,15 +28,7 @@ local function UpdateSingleBPM(self)
 end
 
 local t = Def.ActorFrame{
-	InitCommand=function(self)
-		self:xy(_screen.cx, 52):valign(1)
-
-		if SL.Global.GameMode == "StomperZ" or SL.Global.GameMode == "ECFA" then
-			self:zoom(1)
-		else
-			self:zoom(1.33)
-		end
-	end,
+	InitCommand=cmd(xy,40, 32; valign,1; zoom,1.33),
 
 	LoadFont("_miso")..{
 		Name="RatemodDisplay",
@@ -45,25 +37,18 @@ local t = Def.ActorFrame{
 	}
 }
 
-if SL.Global.GameMode == "StomperZ" or SL.Global.GameMode == "ECFA" then
-	t[#t+1] = Def.Quad{
-		InitCommand=function(self)
-			self:diffuse(0,0,0,0.85):zoomto(66,40):valign(0):xy( 0, -20 )	
-		end
+local displaySingle = Def.ActorFrame{
+	LoadFont("_miso")..{
+		Name="BPMDisplay",
+		InitCommand=cmd(zoom,1)
 	}
-end
+}
 
+displaySingle.InitCommand=cmd(SetUpdateFunction,UpdateSingleBPM)
 
 -- in CourseMode, both players should always be playing the same charts, right?
 if numPlayers == 1 or GAMESTATE:IsCourseMode() then
-	t[#t+1] = Def.ActorFrame{
-		InitCommand=cmd(SetUpdateFunction,UpdateSingleBPM),
-	
-		LoadFont("_miso")..{
-			Name="BPMDisplay",
-			InitCommand=cmd(zoom,1)
-		}
-	}
+	t[#t+1] = displaySingle
 else
 	-- check if both players are playing the same steps
 	local stepsP1 = GAMESTATE:GetCurrentSteps(PLAYER_1)
@@ -81,14 +66,7 @@ else
 
 	if timingP1 == timingP2 then
 		-- both players are steps with the same TimingData; only need one.
-		t[#t+1] = Def.ActorFrame{
-			InitCommand=cmd(SetUpdateFunction,UpdateSingleBPM),
-	
-			LoadFont("_miso")..{
-				Name="BPMDisplay",
-				InitCommand=cmd(zoom,1)
-			}
-		}
+		t[#t+1] = displaySingle
 		return t
 	end
 
@@ -115,19 +93,21 @@ else
 		MusicRateDisplay:settext( MusicRate ~= "1.00" and MusicRate.."x rate" or "" )
 	end
 
-	t[#t+1] = Def.ActorFrame{
-		InitCommand=cmd(SetUpdateFunction,Update2PBPM),
-		
+	local displayTwoPlayers = Def.ActorFrame{
 		-- manual bpm displays
 		LoadFont("_miso")..{
 			Name="DisplayP1",
-			InitCommand=cmd(x,-18; zoom,1; shadowlength,1)
+			InitCommand=cmd(x,-32; zoom,1; shadowlength,1)
 		},
 		LoadFont("_miso")..{
 			Name="DisplayP2",
-			InitCommand=cmd(x,18; zoom,1; shadowlength,1)
+			InitCommand=cmd(x,32; zoom,1; shadowlength,1)
 		}
 	}
+
+	displayTwoPlayers.InitCommand=cmd(SetUpdateFunction,Update2PBPM)
+
+	t[#t+1] = displayTwoPlayers
 end
 
 return t

@@ -80,12 +80,12 @@ local t = Def.ActorFrame {
 	end
 }
 
-local banner_directory = ThemePrefs.Get("VisualTheme")
+
 -- Things that are constantly on the screen (fallback banner + masks)
 t[#t+1] = Def.ActorFrame {
 
 	--fallback banner
-	LoadActor( THEME:GetPathB("ScreenSelectMusic", "overlay/colored_banners/".. banner_directory .."/banner"..SL.Global.ActiveColorIndex.." (doubleres).png"))..{
+	LoadActor( THEME:GetPathB("ScreenSelectMusic", "overlay/colored_banners/banner"..SL.Global.ActiveColorIndex.." (doubleres).png"))..{
 		OnCommand=cmd(xy, _screen.cx, 121.5; zoom, 0.7)
 	},
 
@@ -136,25 +136,26 @@ if GAMESTATE:IsCourseMode() then
 
 else
 
-	for i=1,NumStages do
+	local currentStage = 1
+	for i=NumStages,1,-1 do
 
-		local song = SL.Global.Stages.Stats[i].song
+		local song = SL.Global.Stages.Stats[currentStage].song
 
 		-- Create an ActorFrame for each (Name + Banner) pair
 		-- so that we can display/hide all children simultaneously.
 		local SongNameAndBanner = Def.ActorFrame{
-			InitCommand=function(self) self:visible(false) end,
+			InitCommand=cmd(diffusealpha, 0),
 			OnCommand=function(self)
-				self:sleep(DurationPerStage * (i-1) );
+				self:sleep(DurationPerStage * (math.abs(i-NumStages)) );
 				self:queuecommand("Display")
 			end,
 			DisplayCommand=function(self)
-				self:visible(true)
+				self:diffusealpha(1)
 				self:sleep(DurationPerStage)
+				self:diffusealpha(0)
 				self:queuecommand("Wait")
 			end,
 			WaitCommand=function(self)
-				self:visible(false)
 				self:sleep(DurationPerStage * (NumStages-1))
 				self:queuecommand("Display")
 			end
@@ -186,6 +187,7 @@ else
 
 		-- add each SongNameAndBanner ActorFrame to the primary ActorFrame
 		t[#t+1] = SongNameAndBanner
+		currentStage = currentStage + 1
 	end
 end
 
@@ -195,15 +197,15 @@ for player in ivalues(Players) do
 	local x_offset = (player == PLAYER_1 and -120) or 200
 
 	t[#t+1] = LoadActor("PlayerNameAndDecorations.lua", player)
-	t[#t+1] = LoadActor("./HighScores.lua", player)
+	t[#t+1] = LoadActor("HighScores.lua", player)
 
 	-- this returns an ActorFrame ( see: ./Scripts/Consensual-sick_wheel.lua )
-	-- create_actors() takes five arguments
+	-- creat_actors() takes five arguments
 	--		a name
 	--		the number of wheel actors to actually create onscreen
 	--			note that this is NOT equal to how many items you want to be able to scroll through
 	--			it is how many you want visually onscreen at a given moment
-	--		a metatable defining a generic item in the wheel
+	--		a metatable defining a generica item in the wheel
 	--		x position
 	--		y position
 	if SL[pn].HighScores.EnteringName then

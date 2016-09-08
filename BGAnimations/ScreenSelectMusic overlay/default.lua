@@ -21,10 +21,6 @@ local files = {
 	"./StepsDisplayList/Grid.lua",
 	-- a folder of Lua files to be loaded twice (once for each player)
 	"./PerPlayer",
-	-- MenuTimer code for preserving SSM's timer value
-	"./MenuTimer.lua",
-	-- overlay for sorting the MusicWheel, hidden by default
-	"./SortMenu/default.lua"
 }
 
 for index, file in ipairs(files) do
@@ -32,5 +28,6 @@ for index, file in ipairs(files) do
 		InitCommand=cmd(draworder, index)
 	}
 end
+
 
 return t

@@ -61,7 +61,7 @@ if mods.MeasureCounter and mods.MeasureCounter ~= "None" then
 	}
 
 	af[#af+1] = Def.BitmapText{
-		Font="_wendy small",
+		Font="Common normal",
 		InitCommand=function(self)
 			MeasureCounterBMT = self
 
@@ -69,8 +69,9 @@ if mods.MeasureCounter and mods.MeasureCounter ~= "None" then
 			local width = style:GetWidth(player)
 			local NumColumns = GAMESTATE:GetCurrentStyle():ColumnsPerPlayer()
 
-			self:zoom(0.35)
-				:xy( GetNotefieldX(player) - (width/NumColumns), _screen.cy )
+			self:zoom(0.6)
+				:xy( SCREEN_CENTER_X, _screen.cy -100 )
+				:horizalign(center)
 				:shadowlength(1)
 		end
 	}

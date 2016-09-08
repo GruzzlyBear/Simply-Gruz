@@ -64,31 +64,40 @@ local t = Def.ActorFrame{
 		end
 	end,
 
-	LoadActor( THEME:GetPathG("", "_header.lua") ),
+	Def.Quad{
+		InitCommand=cmd(zoomto, _screen.w, 32; vertalign, top; diffuse,0,0,0,1; x, _screen.cx),
+	},
 
-	LoadFont("_wendy small")..{
-		Name="Stage Number",
-		InitCommand=cmd(diffusealpha,0; zoom,WideScale(0.5,0.6); xy,_screen.cx, 15 ),
-		TextCommand=cmd(settext, StageText),
+	LoadFont("Common Normal")..{
+		Name="HeaderText",
+		InitCommand=cmd(zoom,1; xy, 10, 15;  horizalign,left; diffusealpha,0; settext,ScreenString("HeaderText")),
 		OnCommand=cmd(sleep,0.1; decelerate,0.33; diffusealpha,1),
 	},
 
-	Def.BitmapText{
-		Name="GameModeText",
-		Font="_wendy small",
-		InitCommand=function(self)
-			self:diffusealpha(0):zoom( WideScale(0.5,0.6)):xy(_screen.w-70, 15):halign(1)
-			if not PREFSMAN:GetPreference("MenuTimer") then
-				self:x(_screen.w-10)
+	LoadFont("Common Normal")..{
+		Name="Stage Number",
+		InitCommand=cmd(diffusealpha,0; zoom,1; xy,_screen.cx, 15 ),
+		TextCommand=cmd(settext, StageText),
+		OnCommand=cmd(sleep,0.1; decelerate,0.33; diffusealpha,1),
+	},
+	LoadFont("Common Normal") .. {
+		Name="GroupText",
+		InitCommand=cmd(xy,SCREEN_WIDTH-10,15;halign,1;zoom,1;maxwidth,400);
+		BeginCommand=cmd(queuecommand,"Set");
+		SetCommand=function(self)
+			local sort = GAMESTATE:GetSortOrder()
+			local song = GAMESTATE:GetCurrentSong()
+			if sort == nil then
+				self:settext("Sort: ")
+			elseif sort == "SortOrder_Group" and song ~= nil then
+				self:settext(song:GetGroupName()) 
+			else
+				self:settext(song:GetGroupName())
 			end
-		end,
-		OnCommand=function(self)
-			self:sleep(0.1):decelerate(0.33):diffusealpha(1)
-				:settext(THEME:GetString("ScreenSelectPlayMode", SL.Global.GameMode))
-		end,
-		UpdateHeaderTextCommand=function(self)
-			self:settext(THEME:GetString("ScreenSelectPlayMode", SL.Global.GameMode))
-		end
+
+		end;
+		SortOrderChangedMessageCommand=cmd(queuecommand,"Set";diffusealpha,1);
+		CurrentSongChangedMessageCommand=cmd(queuecommand,"Set");
 	}
 }
 

@@ -5,23 +5,19 @@ if SL[ ToEnumShortString(player) ].ActiveModifiers.HideScore then
 else
 
 	return Def.BitmapText{
-		Font="_wendy monospace numbers",
+		Font="_big",
 		Text="0.00",
 
 		Name=ToEnumShortString(player).."Score",
 		InitCommand=function(self)
-			self:valign(1):halign(1)
-
-			if SL.Global.GameMode == "StomperZ" or SL.Global.GameMode == "ECFA" then
-				self:zoom(0.4):x( WideScale(160, 214) ):y(20)
-				if player == PLAYER_2 then
-					self:x( _screen.w - WideScale(50, 104) )
-				end
-			else
-				self:zoom(0.5):x( _screen.cx - _screen.w/4.3 ):y(56)
-				if player == PLAYER_2 then
-					self:x( _screen.cx + _screen.w/2.75 )
-				end
+			self:y(40)
+			self:valign(1)
+			self:zoom(1.3)
+			if player == PLAYER_1 then
+				self:horizalign(right)
+				self:x( 205 )
+			elseif player == PLAYER_2 then
+				self:x( _screen.cx + _screen.w/2.85 )
 			end
 		end,
 		JudgmentMessageCommand=function(self) self:queuecommand("RedrawScore") end,

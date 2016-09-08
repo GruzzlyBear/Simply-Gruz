@@ -7,29 +7,25 @@ if SL[ToEnumShortString(player)].ActiveModifiers.SubtractiveScoring then
 
   -- grab the appropriate x position from ScreenGameplay's
   -- metrics on Player positioning
-  local x_position = GetNotefieldX( player )
-
-  -- a flag to determine if we are using a GameMode that utilizes FA+ timing windows
-  local FAplus = (SL.Global.GameMode == "StomperZ" or SL.Global.GameMode == "ECFA")
-  local undesirable_judgment = FAplus and "W3" or "W2"
-
+  local x_position = SCREEN_CENTER_X
+  
   -- flag to determine whether to bother to continue counting excellents
   -- or whether to just display percent away from 100%
-  local received_judgment_lower_than_desired = false
+  local received_judgment_lower_than_w2 = false
 
   -- these start at 0 for each new song
   -- FIXME: What about course mode?
-  local undesirable_judgment_count = 0
+  local w2_count = 0
   local judgment_count = 0
   local tns
   local hns
 
   return Def.BitmapText{
-    Font="_wendy small",
+    Font="_miso",
     InitCommand=function(self)
-      self:horizalign(left)
-        :diffuse(color("#ff4cff")):zoom(0.35)
-        :xy( x_position + (notefield_width/2.9), _screen.cy )
+      self:horizalign(center)
+        :diffuse(color("#ffffff")):zoom(1)
+        :xy( SCREEN_CENTER_X, 30 )
     end,
 
     JudgmentMessageCommand=function(self, params)
@@ -42,11 +38,9 @@ if SL[ToEnumShortString(player)].ActiveModifiers.SubtractiveScoring then
 
     SetScoreCommand=function(self, params)
       -- This is a bit convoluted!
-      -- If this is a W2/undesirable_judgment, then we want to count up to 10 with them,
-      -- unless we get some other judgment worse than W2/undesirable_judgment.
-	  -- The complication is in how hold notes are counted.
-	  --
-	  -- Hold note judgments contain a copy of the tap
+      -- If this is a W2, then we want to count up to 10 with them,
+      -- unless we get some other judgment worse than W2.  The complication is in how
+      -- hold notes are counted. Hold note judgments contain a copy of the tap
       -- note judgment that started it (because it affects your life regen?), so
       -- we have to be careful not to double count it against you.  But we also
       -- want to a dropped hold to trigger the percentage scoring.  So the
@@ -57,37 +51,37 @@ if SL[ToEnumShortString(player)].ActiveModifiers.SubtractiveScoring then
       -- used to determine if a player has failed yet
       local topscreen = SCREENMAN:GetTopScreen()
 
-      -- if this is an undesirable judgment AND we can still count up AND it's not a dropped hold
-      if tns == undesirable_judgment and not received_judgment_lower_than_desired and undesirable_judgment_count < 10 and (not hns or ToEnumShortString(hns) ~= "LetGo") then
+      -- if this is an excellent, and we can still count up
+      if tns == "W2" and not received_judgment_lower_than_w2
+        -- and it's not a dropped hold!
+        and (not hns or ToEnumShortString(hns) ~= "LetGo") then
         -- if this is the tail of a hold note, don't double count it
-        if not hns then
+        if not hns then 
           -- increment for the first ten
-          undesirable_judgment_count = undesirable_judgment_count + 1
+          w2_count = w2_count + 1
           -- and specificy literal W2 count
-          self:settext("-" .. undesirable_judgment_count)
+          self:settext(w2_count .. "ex")
         end
-
-      -- else if this wouldn't subtract from percentage (W1 or mine miss)
-      elseif ((FAplus and tns ~= "W1" and tns ~= "W2") or (not FAplus and tns ~= "W1") and tns ~= "AvoidMine") or
-             -- unless it actually would subtract from percentage (W1 + let go)
+      -- else if this wouldn't subtract from percentage (fan or mine miss)
+      elseif (tns ~= "W1" and tns ~= "AvoidMine") or
+             -- unless it actually would subtract from percentage (fan + let go)
              (hns and ToEnumShortString(hns) == "LetGo") or
              -- or we're already dead (and so can't gain any percentage.)
              (topscreen:GetLifeMeter(player):IsFailing()) then
-
-        received_judgment_lower_than_desired = true
+        received_judgment_lower_than_w2 = true
 
         -- specify percent away from 100%
         local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(player)
         local current_possible_dp = pss:GetCurrentPossibleDancePoints()
         local possible_dp = pss:GetPossibleDancePoints()
-
+        
         -- max to prevent subtractive scoring reading more than -100%
         local actual_dp = math.max(pss:GetActualDancePoints(), 0)
 
         local score = current_possible_dp - actual_dp
         score = ((possible_dp - score) / possible_dp) * 100
 
-        self:settext("-" .. string.format("%.2f", 100-score) .. "%" )
+        self:settext(string.format("%.2f", score))
       end
     end
   }
