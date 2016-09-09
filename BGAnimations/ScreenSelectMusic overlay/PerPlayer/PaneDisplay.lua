@@ -196,8 +196,8 @@ for key, item in pairs(PaneItems) do
 			InitCommand=cmd(zoom, zoom_factor; xy, item.label.x, item.label.y; diffuse, Color.White; shadowlength, 0.2; halign, 0)
 		},
 		--  numerical value
-		LoadFont("_miso")..{
-			InitCommand=cmd(zoom, zoom_factor; xy, item.data.x, item.data.y; diffuse, Color.White; shadowlength, 0.2; halign, 1),
+		LoadFont("_extrabold")..{
+			InitCommand=cmd(zoom, 1; xy, item.data.x, item.data.y; diffuse, Color.White; shadowlength, 0.2; halign, 1),
 			OnCommand=cmd(playcommand, "Set"),
 			SetCommand=function(self)
 
