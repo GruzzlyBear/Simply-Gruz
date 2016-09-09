@@ -173,7 +173,7 @@ pd[#pd+1] = Def.Quad{
 			local steps = GAMESTATE:GetCurrentSteps(player)
 			if steps then
 				local difficulty = steps:GetDifficulty()
-				self:diffuse( DifficultyColor(difficulty) )
+				self:diffuse( Color.Black )
 			else
 				self:diffuse( PlayerColor(player) )
 			end
@@ -193,11 +193,11 @@ for key, item in pairs(PaneItems) do
 		-- label
 		LoadFont("_miso")..{
 			Text=key,
-			InitCommand=cmd(zoom, zoom_factor; xy, item.label.x, item.label.y; diffuse, Color.Black; shadowlength, 0.2; halign, 0)
+			InitCommand=cmd(zoom, zoom_factor; xy, item.label.x, item.label.y; diffuse, Color.White; shadowlength, 0.2; halign, 0)
 		},
 		--  numerical value
 		LoadFont("_miso")..{
-			InitCommand=cmd(zoom, zoom_factor; xy, item.data.x, item.data.y; diffuse, Color.Black; shadowlength, 0.2; halign, 1),
+			InitCommand=cmd(zoom, zoom_factor; xy, item.data.x, item.data.y; diffuse, Color.White; shadowlength, 0.2; halign, 1),
 			OnCommand=cmd(playcommand, "Set"),
 			SetCommand=function(self)
 
@@ -262,7 +262,7 @@ pd[#pd+1] = Def.BitmapText{
 pd[#pd+1] = Def.BitmapText{
 	Font="_big",
 	Name="PlayerHighScore",
-	InitCommand=cmd(x, highscoreX+80; y, 173; zoom, 0.9; diffuse, Color.Black; horizalign, right )
+	InitCommand=cmd(x, highscoreX+80; y, 173; zoom, 0.9; diffuse, Color.White; horizalign, right )
 }
 
 --PLAYER PROFILE highscore name

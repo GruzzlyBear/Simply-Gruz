@@ -60,7 +60,7 @@ local wheel_item_mt = {
 				end
 			}
 
-			af[#af+1] = LoadFont("_big")..{
+			af[#af+1] = LoadFont("_miso")..{
 				Text="",
 				InitCommand=function(subself)
 					subself:diffusealpha(0)
@@ -81,13 +81,13 @@ local wheel_item_mt = {
 
 			if has_focus then
 				self.container:accelerate(0.15)
-				self.container:zoom(0.6)
+				self.container:zoom(1.5)
 				self.container:diffuse( GetCurrentColor() )
 				self.container:glow(color("1,1,1,0.5"))
 			else
 				self.container:glow(color("1,1,1,0"))
 				self.container:accelerate(0.15)
-				self.container:zoom(0.5)
+				self.container:zoom(1.5)
 				self.container:diffuse(color("#888888"))
 				self.container:glow(color("1,1,1,0"))
 			end
