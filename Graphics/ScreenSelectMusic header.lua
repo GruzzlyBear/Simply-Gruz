@@ -85,11 +85,8 @@ local t = Def.ActorFrame{
 		InitCommand=cmd(xy,SCREEN_WIDTH-10,15;halign,1;zoom,1;maxwidth,400);
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)
-			local sort = GAMESTATE:GetSortOrder()
 			local song = GAMESTATE:GetCurrentSong()
-			if sort == nil then
-				self:settext(song:GetGroupName())
-			elseif sort == "SortOrder_Group" and song ~= nil then
+			if song ~= nil then
 				self:settext(song:GetGroupName()) 
 			else
 				local musicwheel = SCREENMAN:GetTopScreen():GetMusicWheel();
