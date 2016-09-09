@@ -1,3 +1,3 @@
-return LoadFont("_wendy small") .. {
+return LoadFont("_big") .. {
 	Text=ScreenString("Disqualified");
 };

@@ -1,4 +1,4 @@
-return LoadFont("_wendy small") .. {
+return LoadFont("_big") .. {
 	Text="Exit";
 	InitCommand=cmd(x,_screen.cx;zoom,0.5;shadowlength,0;diffuse,GetCurrentColor();NoStroke);
 	OnCommand=cmd(diffusealpha,0;decelerate,0.5;diffusealpha,1);

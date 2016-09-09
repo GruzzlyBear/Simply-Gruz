@@ -17,7 +17,7 @@ local t = Def.ActorFrame {
 	LoseFocusCommand=cmd(stoptweening; linear,0.125; zoom,0.5)
 }
 
-t[#t+1] = LoadFont("_wendy small")..{
+t[#t+1] = LoadFont("_big")..{
 	Name="StyleName"..iIndex,
 	InitCommand=function(self)
 		self:settext(THEME:GetString("ScreenSelectStyle", choiceName))
