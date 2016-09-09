@@ -22,7 +22,7 @@ else
 
 	-- record text
 	local t = Def.ActorFrame{
-		InitCommand=cmd(zoom, 0.225),
+		InitCommand=cmd(zoom, 0.3),
 		OnCommand=function(self)
 			self:x( (player == PLAYER_1 and -80) or 80 )
 			self:y( 54 )

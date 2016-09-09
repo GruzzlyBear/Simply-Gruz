@@ -21,7 +21,7 @@ local t = Def.ActorFrame{
 		-- background for Artist, BPM, and Song Length
 		Def.Quad{
 			InitCommand=function(self)
-				self:diffuse(color("#1e282f"))
+				self:diffuse(color("#000000"))
 				self:zoomtowidth( IsUsingWideScreen() and 320 or 310 )
 				self:zoomtoheight( 48 )
 			end

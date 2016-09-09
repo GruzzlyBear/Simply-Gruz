@@ -55,7 +55,7 @@ local t = Def.ActorFrame{
 	Def.Quad{
 		Name="Background",
 		InitCommand=function(self)
-			self:diffuse(color("#1e282f"))
+			self:diffuse(color("#000000"))
 			self:zoomto(320, 96)
 		end
 	},
