@@ -3,7 +3,7 @@ local pn = ...
 local stats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn)
 local disqualified = stats:IsDisqualified()
 
-return LoadFont("_wendy small")..{
+return LoadFont("_big")..{
 	Name="Disqualified"..ToEnumShortString(pn),
 	InitCommand=cmd(diffusealpha,0.7; zoom,0.23; y, _screen.cy+138 ),
 	OnCommand=function(self)

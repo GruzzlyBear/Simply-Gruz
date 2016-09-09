@@ -41,7 +41,7 @@ for section, offset in pairs(sections) do
 		ShowCommand=cmd(decelerate, 0.2; diffusealpha, 1),
 		HideCommand=cmd(diffusealpha, 0),
 
-		LoadFont("_wendy small")..{
+		LoadFont("_big")..{
 			Text=THEME:GetString("ScreenEdit", section.."Label"),
 			InitCommand=cmd(zoom, 0.265; horizalign, left; xy, 35, 10; diffuse, PlayerColor(PLAYER_1))
 		},

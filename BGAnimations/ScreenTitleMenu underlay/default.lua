@@ -1,4 +1,4 @@
-local SongStats = SONGMAN:GetNumSongs() .. " songs in "
+	local SongStats = SONGMAN:GetNumSongs() .. " songs in "
 SongStats = SongStats .. SONGMAN:GetNumSongGroups() .. " groups, "
 SongStats = SongStats .. SONGMAN:GetNumCourses() .. " courses"
 
@@ -27,11 +27,11 @@ return Def.ActorFrame{
 
 	LoadActor(THEME:GetPathG("", "_logos/" .. game))..{
 		InitCommand=function(self)
-			self:y(-16):zoom( game=="pump" and 0.2 or 0.205 )
+			self:y(0):zoom( game=="pump" and 0.2 or 0.205 )
 		end
 	},
 
 	LoadActor("SimplyLove (doubleres).png") .. {
-		InitCommand=cmd(x,2; zoom, 0.7)
+		InitCommand=cmd(x,2; y,-15;zoom, 0.7)
 	}
 }

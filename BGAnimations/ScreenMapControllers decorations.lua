@@ -4,7 +4,7 @@ local function PlayerText(pn)
 	local pnumber = pn == PLAYER_1 and "1" or "2";
 	local xpos = pn == PLAYER_1 and 0.5 or 1.5;
 
-	return LoadFont("_wendy small")..{
+	return LoadFont("_big")..{
 		Name="Label"..pname(pn);
 		Text="Player "..pnumber;
 		InitCommand=cmd(x,_screen.cx*xpos; y,headerHeight/2; NoStroke; zoom,0.8;);

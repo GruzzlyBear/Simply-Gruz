@@ -36,7 +36,7 @@ for pn in ivalues(Players) do
 		OnCommand=cmd(linear,0.3;diffusealpha,1);
 		OffCommand=cmd(linear,0.2;diffusealpha,0);
 	
-		LoadFont("_wendy small")..{
+		LoadFont("_big")..{
 			Text="PLAYER "..ToEnumShortString(pn):gsub("P","");
 			InitCommand=cmd(y,-210;zoom,0.7)
 		};

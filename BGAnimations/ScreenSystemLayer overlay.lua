@@ -69,7 +69,7 @@ t[#t+1] = Def.ActorFrame {
 }
 
 -- Centered Credit Text
-t[#t+1] = LoadFont("_wendy small")..{
+t[#t+1] = LoadFont("_big")..{
 	InitCommand=cmd(xy, _screen.cx, _screen.h-16; zoom,0.5; horizalign,center ),
 
 	OnCommand=cmd(playcommand,"Refresh"),
@@ -101,7 +101,7 @@ t[#t+1] = LoadFont("_wendy small")..{
 		self:visible( bShow )
 
 		if PREFSMAN:GetPreference("EventMode") then
-			self:settext('EVENT MODE')
+			self:settext('')
 
 		elseif GAMESTATE:GetCoinMode() == "CoinMode_Pay" then
 			local credits = GetCredits()

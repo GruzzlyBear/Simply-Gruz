@@ -32,7 +32,7 @@ local af = Def.ActorFrame{
 	OffCommand=cmd(visible,false),
 
 
-	LoadFont("_wendy small")..{
+	LoadFont("_big")..{
 		Text=THEME:GetString("ScreenLogo", "EnterCreditsToPlay"),
 		InitCommand=cmd(xy,_screen.cx,SCREEN_BOTTOM-100; zoom,0.525; visible,false),
 		RefreshCommand=function(self)
@@ -41,7 +41,7 @@ local af = Def.ActorFrame{
 		end
 	},
 
-	LoadFont("_wendy small")..{
+	LoadFont("_big")..{
 		Text=THEME:GetString("ScreenTitleJoin", "Press Start"),
 		InitCommand=cmd(xy,_screen.cx, _screen.h-80; zoom,0.715; visible,false),
 		RefreshCommand=function(self)
@@ -50,7 +50,7 @@ local af = Def.ActorFrame{
 		end
 	},
 
-	LoadFont("_wendy small")..{
+	LoadFont("_big")..{
 		Text=THEME:GetString("ScreenSelectMusic","Start Button"),
 		InitCommand=cmd(x,_screen.cx - 12; y,_screen.h - 125; zoom,1.1; visible,false),
 		RefreshCommand=function(self)

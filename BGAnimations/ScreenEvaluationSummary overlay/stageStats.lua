@@ -95,7 +95,7 @@ for pn in ivalues(Players) do
 			end
 
 			--percent score
-			t[#t+1] = LoadFont("_wendy small")..{
+			t[#t+1] = LoadFont("_big")..{
 				InitCommand=cmd(zoom,0.5; horizalign, align1; x,col1x; y,-24),
 				OnCommand=function(self)
 					if score then
@@ -112,7 +112,7 @@ for pn in ivalues(Players) do
 			}
 
 			-- difficulty meter
-			t[#t+1] = LoadFont("_wendy small")..{
+			t[#t+1] = LoadFont("_big")..{
 				InitCommand=cmd(zoom,0.4; horizalign, align1; x,col1x; y,4),
 				OnCommand=function(self)
 					if difficultyMeter then
@@ -146,7 +146,7 @@ for pn in ivalues(Players) do
 			-- numbers
 			for i=1,#TNSTypes do
 
-				t[#t+1] = LoadFont("_wendy small")..{
+				t[#t+1] = LoadFont("_big")..{
 					InitCommand=cmd(zoom,0.28; horizalign, align2; x,col2x; y,i*13 - 50),
 					OnCommand=function(self)
 

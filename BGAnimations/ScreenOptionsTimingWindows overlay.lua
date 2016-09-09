@@ -13,7 +13,7 @@ local sequenceStrings = {
 }
 
 -- Header text
-t[#t+1] = LoadFont("_wendy small")..{
+t[#t+1] = LoadFont("_big")..{
 	Text=THEME:GetString("ScreenOptionsTimingWindows", "Important"),
 	InitCommand=cmd(xy,94, 20; zoom, 0.5),
 	OnCommand=cmd(diffuseshift; effectperiod,1; effectcolor1, Color.Red; effectcolor2, Color.White)

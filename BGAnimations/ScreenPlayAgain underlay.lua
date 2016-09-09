@@ -88,7 +88,7 @@ local wheel_item_mt = {
 				end
 			}
 
-			af[#af+1] = LoadFont("_wendy small")..{
+			af[#af+1] = LoadFont("_big")..{
 				InitCommand=function(subself)
 					self.text= subself
 					subself:diffusealpha(0)
@@ -171,7 +171,7 @@ local t = Def.ActorFrame{
 		InitCommand=cmd(FullScreen; diffuse,Color.Black; diffusealpha,0.6)
 	},
 
-	LoadFont("_wendy small")..{
+	LoadFont("_big")..{
 		Text=THEME:GetString("ScreenPlayAgain", "Continue"),
 		InitCommand=cmd(xy, _screen.cx, _screen.cy-30),
 	},

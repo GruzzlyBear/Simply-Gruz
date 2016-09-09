@@ -14,13 +14,13 @@ return Def.ActorFrame{
 		end
 	end,
 
-	LoadFont("_wendy small")..{
+	LoadFont("_big")..{
 		Text=THEME:GetString("ScreenTitleJoin", "Press Start"),
 		InitCommand=cmd(xy,_screen.cx, _screen.h-80 ),
 		OnCommand=cmd(zoom,0.715),
 	},
 	
-	LoadFont("_wendy small")..{
+	LoadFont("_big")..{
 		Text=THEME:GetString("ScreenSelectMusic","Start Button");
 		InitCommand=cmd(x,_screen.cx - 12; y,_screen.h - 125; zoom,1.1);
 	}

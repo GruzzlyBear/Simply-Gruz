@@ -49,7 +49,7 @@ local t = Def.ActorFrame{
 	
 	
 	-- text description of each mode ("dance", "marathon")
-	LoadFont("_wendy small")..{
+	LoadFont("_miso")..{
 		Name="ModeName"..iIndex;
 		Text=THEME:GetString(Var 'LoadingScreen',sName);
 		InitCommand=cmd(y,100; zoom,0.6; )

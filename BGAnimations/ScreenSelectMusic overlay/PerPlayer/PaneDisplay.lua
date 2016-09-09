@@ -229,7 +229,7 @@ end
 
 -- chart difficulty meter
 pd[#pd+1] = Def.BitmapText{
-	Font="_wendy small",
+	Font="_big",
 	Name="DifficultyMeter",
 	InitCommand=cmd(horizalign, right; diffuse, Color.Black; xy, _screen.w/4 - 100000000000, _screen.h/2 - 65; queuecommand, "Set"),
 	SetCommand=function(self)

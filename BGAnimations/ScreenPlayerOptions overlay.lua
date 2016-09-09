@@ -175,7 +175,7 @@ for player in ivalues(Players) do
 	}
 
 	-- the display that does math for you up at the top
-	t[#t+1] = LoadFont("_wendy small")..{
+	t[#t+1] = LoadFont("_big")..{
 		Name=pn.."SpeedModHelper",
 		Text="",
 		InitCommand=function(self)

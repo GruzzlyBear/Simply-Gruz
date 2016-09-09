@@ -60,7 +60,7 @@ local wheel_item_mt = {
 				end
 			}
 
-			af[#af+1] = LoadFont("_wendy small")..{
+			af[#af+1] = LoadFont("_big")..{
 				Text="",
 				InitCommand=function(subself)
 					subself:diffusealpha(0)

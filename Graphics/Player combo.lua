@@ -98,7 +98,7 @@ else
 			end
 		},
 
-		LoadFont("_wendy small")..{
+		LoadFont("_miso")..{
 			Name="Label",
 			InitCommand=cmd(zoom,0.25 ),
 			OnCommand=cmd(xy,0,0; shadowlength,1; vertalign,top )

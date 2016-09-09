@@ -33,7 +33,7 @@ return Def.ActorFrame{
 	},
 
 	Def.BitmapText{
-		Font="_wendy small",
+		Font="_big",
 		Text=THEME:GetString("ScreenProfileLoad","Loading Profiles..."),
 		InitCommand=function(self)
 			self:diffuse(Color.Black):zoom(0.6)
