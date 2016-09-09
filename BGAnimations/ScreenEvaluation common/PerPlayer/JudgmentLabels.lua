@@ -31,12 +31,12 @@ local t = Def.ActorFrame{
 --  labels: W1 ---> Miss
 for index, label in ipairs(TNSNames) do
 	t[#t+1] = LoadFont("_miso")..{
-		Text=label:upper(),
-		InitCommand=cmd(zoom,0.833; horizalign,right ),
+		Text=label:lower(),
+		InitCommand=cmd(zoom,1; horizalign,right ),
 		BeginCommand=function(self)
-			self:x( 32 )
+			self:x( 28 )
 			self:y((index-1)*28 -16)
-			self:maxwidth(75)
+			self:maxwidth(60)
 		end
 	}
 end
