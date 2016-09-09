@@ -93,7 +93,7 @@ local t = Def.ActorFrame{
 				self:settext(song:GetGroupName()) 
 			else
 				local musicwheel = SCREENMAN:GetTopScreen():GetMusicWheel();
-				self:settext(song:GetGroupName())
+				self:settext(musicwheel:GetSelectedSection())
 			end
 
 		end;
