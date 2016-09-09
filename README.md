@@ -7,6 +7,9 @@ o/ This is an edit of Simply Love by dguzek called Simply Gruz. It is designed f
 Please look at the [wiki](https://github.com/GruzzlyBear/Simply-Gruz/wiki) for more information.
 
 # Download:
+
 [Latest](https://github.com/GruzzlyBear/Simply-Gruz/archive/master.zip)
+
 [Stable](https://github.com/GruzzlyBear/Simply-Gruz/archive/v1.1.zip)
+
 [Old](https://github.com/GruzzlyBear/Simply-Gruz/archive/v1.0.zip)
