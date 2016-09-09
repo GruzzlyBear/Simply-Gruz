@@ -243,13 +243,6 @@ pd[#pd+1] = Def.BitmapText{
 	end
 }
 
---MACHINE high score
-pd[#pd+1] = Def.BitmapText{
-	Font="_big",
-	Name="MachineHighScore",
-	InitCommand=cmd(x, highscoreX+80; y, 173; zoom, 0.9; diffuse, Color.Black; horizalign, right )
-}
-
 --MACHINE highscore name
 pd[#pd+1] = Def.BitmapText{
 	Font="_miso",
@@ -258,11 +251,18 @@ pd[#pd+1] = Def.BitmapText{
 }
 
 
---PLAYER PROFILE high score
+--MACHINE high score
 pd[#pd+1] = Def.BitmapText{
 	Font="_miso",
-	Name="PlayerHighScore",
+	Name="MachineHighScore",
 	InitCommand=cmd(x, highscoreX; y, 90000; zoom, zoom_factor; diffuse, Color.Black; halign, 1 )
+}
+
+--PLAYER PROFILE high score
+pd[#pd+1] = Def.BitmapText{
+	Font="_big",
+	Name="PlayerHighScore",
+	InitCommand=cmd(x, highscoreX+80; y, 173; zoom, 0.9; diffuse, Color.Black; horizalign, right )
 }
 
 --PLAYER PROFILE highscore name
