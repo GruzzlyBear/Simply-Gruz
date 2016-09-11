@@ -1,44 +1,21 @@
 local t = Def.ActorFrame{
 	ChangeStepsMessageCommand=function(self, params)
 		self:playcommand("StepsHaveChanged", {Direction=params.Direction, Player=params.Player})
-	end
-}
-
--- Each file contains the code for a particular screen element.
--- I've made this table ordered so that I can specificy
--- a desired draworder later below.
-
-local files = {
-	-- make the MusicWheel appear to cascade down
-	"./MusicWheelAnimation.lua",
-	-- Apply player modifiers from profile
-	"./PlayerModifiers.lua",
-	-- Graphical Banner
-	"./Banner.lua",
-	-- Song Artist, BPM, Duration (Referred to in other themes as "PaneDisplay")
-	"./SongDescription.lua",
-	-- Difficulty Blocks
-	"./StepsDisplayList/Grid.lua",
-	-- a folder of Lua files to be loaded twice (once for each player)
-	"./PerPlayer",
-
-}
---I'ma call it the fuck you people with fucking huge cdtitles script, With Love - Jousway
---Update, Added a BAD NPS system
-local t = Def.ActorFrame {
-	
+	end;
+	--I'ma call it the fuck you people with fucking huge cdtitles script, With Love - Jousway
+	--Update, Added a BAD NPS system	
 	--NPS Calculator/Display
 	LoadFont("Common Normal") .. {
 		Text="NOTES PER SECOND";
-		InitCommand=cmd(x,SCREEN_CENTER_X-140;y,SCREEN_CENTER_Y-62;zoom,0.75;diffuse,color("#7f8c8d");strokecolor,Color("#7f8c8d");halign,1);
+		InitCommand=cmd(x,SCREEN_CENTER_X-140;y,SCREEN_CENTER_Y-62;zoom,0.75;diffuse,color("#7f8c8d");strokecolor,color("#7f8c8d");halign,1);
 	};
 	LoadFont("_big") .. {
 		Name="P1NPS";
-		InitCommand=cmd(x,SCREEN_CENTER_X-76;y,SCREEN_CENTER_Y-62;zoom,0.75;halign,0;diffuse,color("#bdc3c7");strokecolor,Color("Outline"));
+		InitCommand=cmd(x,SCREEN_CENTER_X-76;y,SCREEN_CENTER_Y-62;zoom,0.75;halign,0;diffuse,color("#bdc3c7");strokecolor,color("Outline"));
 	};
 	LoadFont("Common Normal") .. {
 		Name="P2NPS";
-		InitCommand=cmd(y,SCREEN_CENTER_Y-56;zoom,0.75;diffuse,color("#0089cf");strokecolor,Color("Outline"));
+		InitCommand=cmd(y,SCREEN_CENTER_Y-56;zoom,0.75;diffuse,color("#0089cf");strokecolor,color("Outline"));
 	};
 
 	--CDTitle Resizer/Container
@@ -60,6 +37,26 @@ local t = Def.ActorFrame {
 		};
 	};
 };
+
+-- Each file contains the code for a particular screen element.
+-- I've made this table ordered so that I can specificy
+-- a desired draworder later below.
+
+local files = {
+	-- make the MusicWheel appear to cascade down
+	"./MusicWheelAnimation.lua",
+	-- Apply player modifiers from profile
+	"./PlayerModifiers.lua",
+	-- Graphical Banner
+	"./Banner.lua",
+	-- Song Artist, BPM, Duration (Referred to in other themes as "PaneDisplay")
+	"./SongDescription.lua",
+	-- Difficulty Blocks
+	"./StepsDisplayList/Grid.lua",
+	-- a folder of Lua files to be loaded twice (once for each player)
+	"./PerPlayer",
+
+}
 
 local function Update(self)
 	local song = GAMESTATE:GetCurrentSong();
