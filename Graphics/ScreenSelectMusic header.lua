@@ -70,7 +70,7 @@ local t = Def.ActorFrame{
 
 	LoadFont("Common Normal")..{
 		Name="HeaderText",
-		InitCommand=cmd(zoom,1; xy, 10, 15;  horizalign,left; diffusealpha,0; settext,ScreenString("HeaderText")),
+		InitCommand=cmd(zoom,1; xy, 10, 15;  horizalign,left; diffusealpha,0; settext,ScreenString("HeaderText");diffuse, color("#7f8c8d")),
 		OnCommand=cmd(sleep,0.1; decelerate,0.33; diffusealpha,1),
 	},
 
@@ -82,7 +82,7 @@ local t = Def.ActorFrame{
 	},
 	LoadFont("Common Normal") .. {
 		Name="GroupText",
-		InitCommand=cmd(xy,SCREEN_WIDTH-10,15;halign,1;zoom,1;maxwidth,400);
+		InitCommand=cmd(xy,SCREEN_WIDTH-10,15;halign,1;zoom,1;maxwidth,400;diffuse, color("#7f8c8d"));
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong()

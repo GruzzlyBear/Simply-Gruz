@@ -55,13 +55,13 @@ return Def.ActorFrame{
 	--STEPS label
 	Def.BitmapText{
 		Font="_miso",
-		OnCommand=cmd(diffuse, color("0.5,0.5,0.5,1"); horizalign, left; x, 40; settext, "STEPS"; zoom, 0.7)
+		OnCommand=cmd(diffuse, color("#7f8c8d"); horizalign, left; x, 40; settext, "STEPS"; zoom, 0.7)
 	},
 
 	--stepartist text
 	Def.BitmapText{
 		Font="Common Normal",
-		InitCommand=cmd(diffuse,color("#ffffff"); horizalign, left; x, 75; maxwidth, 115),
+		InitCommand=cmd(diffuse,color("#bdc3c7"); horizalign, left; x, 75; maxwidth, 115),
 		StepsHaveChangedCommand=function(self)
 
 			local song = GAMESTATE:GetCurrentSong()

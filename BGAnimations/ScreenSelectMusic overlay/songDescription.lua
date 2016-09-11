@@ -35,12 +35,12 @@ local t = Def.ActorFrame{
 			LoadFont("_miso")..{
 				Text="ARTIST",
 				InitCommand=cmd(horizalign, right; y, -12;zoom, 0.8),
-				OnCommand=cmd(diffuse,color("0.5,0.5,0.5,1"))
+				OnCommand=cmd(diffuse,color("#7f8c8d"))
 			},
 
 			-- Song Artist
 			LoadFont("_miso")..{
-				InitCommand=cmd(horizalign,left; xy, 5,-12; maxwidth,WideScale(225,260) ),
+				InitCommand=cmd(horizalign,left; xy, 5,-12; maxwidth,WideScale(225,260) ;diffuse,color("#bdc3c7")),
 				SetCommand=function(self)
 					local song = GAMESTATE:GetCurrentSong()
 
@@ -58,14 +58,14 @@ local t = Def.ActorFrame{
 			LoadFont("_miso")..{
 				InitCommand=cmd(horizalign, right; NoStroke; y, 8;zoom, 0.8),
 				SetCommand=function(self)
-					self:diffuse(0.5,0.5,0.5,1)
+					self:diffuse(color("#7f8c8d"))
 					self:settext("BPM")
 				end
 			},
 
 			-- BPM value
 			LoadFont("_miso")..{
-				InitCommand=cmd(horizalign, left; NoStroke; y, 8; x, 5; diffuse, color("1,1,1,1")),
+				InitCommand=cmd(horizalign, left; NoStroke; y, 8; x, 5; diffuse, color("#bdc3c7")),
 				SetCommand=function(self)
 
 					--defined in ./Scipts/SL-CustomSpeedMods.lua
@@ -84,14 +84,14 @@ local t = Def.ActorFrame{
 				InitCommand=cmd(horizalign, right; y, 8; x, _screen.w/4.5;zoom, 0.8),
 				SetCommand=function(self)
 					local song = GAMESTATE:GetCurrentSong()
-					self:diffuse(0.5,0.5,0.5,1)
+					self:diffuse(color("#7f8c8d"))
 					self:settext("LENGTH")
 				end
 			},
 
 			-- Song Length Value
 			LoadFont("_miso")..{
-				InitCommand=cmd(horizalign, left; y, 8; x, _screen.w/4.5 + 5),
+				InitCommand=cmd(horizalign, left; y, 8; x, _screen.w/4.5 + 5;diffuse, color("#bdc3c7")),
 				SetCommand=function(self)
 					local duration
 
