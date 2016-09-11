@@ -29,8 +29,8 @@ local t = Def.ActorFrame {
 	
 	--NPS Calculator/Display
 	LoadFont("Common Normal") .. {
-		Text="NPS";
-		InitCommand=cmd(x,SCREEN_CENTER_X-94;y,SCREEN_CENTER_Y-62;zoom,0.75;diffuse,color("#7f8c8d");strokecolor,Color("#7f8c8d"));
+		Text="NOTES PER SECOND";
+		InitCommand=cmd(x,SCREEN_CENTER_X-140;y,SCREEN_CENTER_Y-62;zoom,0.75;diffuse,color("#7f8c8d");strokecolor,Color("#7f8c8d");halign,1);
 	};
 	LoadFont("_big") .. {
 		Name="P1NPS";
@@ -50,7 +50,7 @@ local t = Def.ActorFrame {
 			-- InitCommand=cmd(diffuse,Color("Orange"));
 		-- };
 		LoadFont("Common Normal") .. {
-			Text="Simfile by";
+			Text="SIMFILE BY";
 			InitCommand=cmd(zoom,0.7;y,-338;x,-100;diffuse,1,1,1,1;shadowlength,1;halign,1;diffuse,color("#7f8c8d")); -- strokecolor,Color("Black")
 		};
 		Def.Sprite {
