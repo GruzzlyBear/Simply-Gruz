@@ -7,7 +7,7 @@ local t = Def.ActorFrame{
 	--NPS Calculator/Display
 	LoadFont("Common Normal") .. {
 		Text="NOTES PER SECOND";
-		InitCommand=cmd(x,SCREEN_CENTER_X-140;y,SCREEN_CENTER_Y-62;zoom,0.75;diffuse,color("#7f8c8d");strokecolor,color("#7f8c8d");halign,1);
+		InitCommand=cmd(x,SCREEN_CENTER_X-90;y,SCREEN_CENTER_Y-62;zoom,0.75;diffuse,color("#7f8c8d");strokecolor,color("#7f8c8d");halign,1);
 	};
 	LoadFont("_big") .. {
 		Name="P1NPS";

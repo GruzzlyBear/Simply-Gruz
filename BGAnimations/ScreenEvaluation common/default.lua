@@ -69,7 +69,7 @@ for pn in ivalues(Players) do
 
 		-- background quad for player stats
 		Def.Quad{
-			InitCommand=cmd(diffuse,color("#1E282F"); y,_screen.cy+34; zoomto, 300,180 )
+			InitCommand=cmd(diffuse,color("#000000"); y,_screen.cy+34; zoomto, 300,180 )
 		},
 
 		-- labels (like "FANTASTIC, MISS, holds, rolls, etc.")

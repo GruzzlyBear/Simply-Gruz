@@ -2,12 +2,12 @@ return Def.ActorFrame{
 
 	-- quad behind the song/course title text
 	Def.Quad{
-		InitCommand=cmd(diffuse,color("#1E282F"); xy,_screen.cx, 65.5; zoomto, 293,20),
+		InitCommand=cmd(diffuse,color("#000000"); xy,_screen.cx, 65.5; zoomto, 293,20),
 	},
 
 	-- song/course title text
 	LoadFont("_miso")..{
-		InitCommand=cmd(xy,_screen.cx,65.5; maxwidth, 294 ),
+		InitCommand=cmd(xy,_screen.cx,65.5; maxwidth, 294 ;diffuse, color("#bdc3c7")),
 		OnCommand=function(self)
 			local songtitle = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayMainTitle()) or GAMESTATE:GetCurrentSong():GetDisplayMainTitle()
 

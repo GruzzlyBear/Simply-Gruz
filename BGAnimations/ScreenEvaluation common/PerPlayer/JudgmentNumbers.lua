@@ -34,7 +34,7 @@ for index, window in ipairs(TapNoteScores.Types) do
 	-- actual numbers
 	t[#t+1] = Def.RollingNumbers{
 		Font="_big",
-		InitCommand=cmd(zoom,1; horizalign, right; Load, "RollingNumbersEvaluationA" ),
+		InitCommand=cmd(zoom,1; horizalign, right; Load, "RollingNumbersEvaluationA" ;diffuse, color("#bdc3c7")),
 		BeginCommand=function(self)
 			self:x( TapNoteScores.x[pn] )
 			self:y((index-1)*35 -20)
@@ -53,7 +53,7 @@ for index, RCType in ipairs(RadarCategories.Types) do
 	-- player performace value
 	t[#t+1] = Def.RollingNumbers{
 		Font="_big",
-		InitCommand=cmd(zoom,1; horizalign, right; Load, "RollingNumbersEvaluationB"),
+		InitCommand=cmd(zoom,1; horizalign, right; Load, "RollingNumbersEvaluationB";diffuse, color("#bdc3c7")),
 		BeginCommand=function(self)
 			self:y((index-1)*35 + 53)
 			self:x( RadarCategories.x[pn] )
@@ -73,7 +73,7 @@ for index, RCType in ipairs(RadarCategories.Types) do
 
 	-- possible value
 	t[#t+1] = LoadFont("_big")..{
-		InitCommand=cmd(zoom,1; horizalign, right),
+		InitCommand=cmd(zoom,1; horizalign, right;diffuse, color("#bdc3c7")),
 		BeginCommand=function(self)
 			self:y((index-1)*35 + 53)
 			self:x( ((player == PLAYER_1) and -114) or 286 )

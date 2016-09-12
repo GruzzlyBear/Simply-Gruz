@@ -15,13 +15,13 @@ return Def.ActorFrame{
 
 	-- dark background quad behind player percent score
 	Def.Quad{
-		InitCommand=cmd(diffuse, color("#101519"); zoomto, 160,60 )
+		InitCommand=cmd(diffuse, color("#000000"); zoomto, 160,60 )
 	},
 
 	LoadFont("_big")..{
 		Text=percent,
 		Name="Percent",
-		InitCommand=cmd(valign, 1; horizalign, right; zoom,1.5; y,15 ),
+		InitCommand=cmd(valign, 1; horizalign, right; zoom,1.5; y,15 ;diffuse, color("#bdc3c7")),
 		OnCommand=cmd(x, 70)
 	}
 }

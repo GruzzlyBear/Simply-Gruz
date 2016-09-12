@@ -2,7 +2,7 @@ return Def.ActorFrame{
 
 	--quad behind the ratemod, if there is one
 	Def.Quad{
-		InitCommand=cmd(diffuse,color("#1E282FCC"); xy,_screen.cx, 49; zoomto, 292.5,14 ),
+		InitCommand=cmd(diffuse,color("#000000"); xy,_screen.cx, 49; zoomto, 292.5,14 ),
 		OnCommand=function(self)
 			local MusicRate = SL.Global.ActiveModifiers.MusicRate
 			if MusicRate == 1 then
@@ -13,7 +13,7 @@ return Def.ActorFrame{
 
 	--the ratemod, if there is one
 	LoadFont("_miso")..{
-		InitCommand=cmd(xy,_screen.cx, 49; shadowlength,1; zoom, 0.7),
+		InitCommand=cmd(xy,_screen.cx, 49; shadowlength,1; zoom, 0.7;diffuse, color("#7f8c8d")),
 		OnCommand=function(self)
 			-- what was the MusicRate for this song?
 			local MusicRate = SL.Global.ActiveModifiers.MusicRate
