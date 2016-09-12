@@ -90,6 +90,7 @@ for pn in ivalues(Players) do
 
 		-- was this player disqualified from ranking?
 		LoadActor("./PerPlayer/Disqualified.lua", pn)
+		
 	}
 end
 
