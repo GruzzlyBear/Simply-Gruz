@@ -11,7 +11,7 @@ local t = Def.ActorFrame{
 	};
 	LoadFont("_big") .. {
 		Name="P1NPS";
-		InitCommand=cmd(x,SCREEN_CENTER_X-76;y,SCREEN_CENTER_Y-62;zoom,0.75;halign,0;diffuse,color("#bdc3c7");strokecolor,color("Outline"));
+		InitCommand=cmd(x,SCREEN_CENTER_X-10;y,SCREEN_CENTER_Y-62;zoom,0.75;halign,1;diffuse,color("#bdc3c7");strokecolor,color("Outline"));
 	};
 	LoadFont("Common Normal") .. {
 		Name="P2NPS";
