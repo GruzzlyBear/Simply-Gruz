@@ -20,7 +20,7 @@ local filter = Def.Quad{
 		self:diffuse(Color.Black)
 			:diffusealpha( FilterAlpha[mods.BackgroundFilter] or 0 )
 			:xy( GetNotefieldX(player), _screen.cy )
-			:zoomto( 200, _screen.h )
+			:zoomto( 210, _screen.h )
 	end,
 	OffCommand=function(self) self:queuecommand("ComboFlash") end,
 	ComboFlashCommand=function(self)

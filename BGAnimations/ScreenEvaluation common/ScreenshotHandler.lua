@@ -12,7 +12,7 @@ return Def.Sprite{
 			self:zoomto(_screen.w, _screen.h)
 			local MusicRate = SL.Global.ActiveModifiers.MusicRate
 			local songtitle = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayMainTitle()) or GAMESTATE:GetCurrentSong():GetDisplayFullTitle()
-			local songtitlealpha = songtitle:gsub('%?','')
+			local songtitlealpha = songtitle:gsub("[*?]",{["*"] = "", ["?"] = ""})
 			local group = (GAMESTATE:GetCurrentSong():GetGroupName())
 			local rate = (("%g"):format(MusicRate))
 
