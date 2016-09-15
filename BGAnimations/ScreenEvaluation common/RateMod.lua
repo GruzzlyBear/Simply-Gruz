@@ -24,7 +24,7 @@ return Def.ActorFrame{
 			local bpm = GetDisplayBPMs()
 
 			if MusicRate ~= 1 then
-				self:settext(("%g"):format(MusicRate) .. " Music Rate")
+				self:settext(("%g"):format(MusicRate))
 				if bpm then
 
 					--if there is a range of BPMs
@@ -40,10 +40,10 @@ return Def.ActorFrame{
 						bpm = tonumber(bpm) * MusicRate
 					end
 
-					self:settext(self:GetText() .. " (" .. bpm .. " BPM)" )
+					self:settext(self:GetText())
 				end
 			else
-				self:settext(("%g"):format(MusicRate) .. " Music Rate")
+				self:settext(("%g"):format(MusicRate))
 				if bpm then
 
 					--if there is a range of BPMs
@@ -59,7 +59,7 @@ return Def.ActorFrame{
 						bpm = tonumber(bpm) * MusicRate
 					end
 
-					self:settext(self:GetText() .. " (" .. bpm .. " BPM)" )
+					self:settext(self:GetText())
 				end
 			end
 		end

@@ -54,7 +54,7 @@ local t = Def.ActorFrame{
 
 	Def.Quad{
 		InitCommand=cmd(diffuse,Color.Black; Center; FullScreen),
-		OnCommand=cmd(sleep,1.4; accelerate,0.6; diffusealpha,0)
+		OnCommand=cmd(sleep,0; accelerate,0; diffusealpha,0)
 	},
 
 
