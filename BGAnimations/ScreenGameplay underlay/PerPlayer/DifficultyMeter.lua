@@ -7,7 +7,8 @@ return Def.ActorFrame{
 			self:diffuse(Color.White)
 			self:zoom( 1 )
 			self:horizalign(right)
-			self:xy( 205, 56)
+			self:xy( 202, 56)
+			self:maxwidth(20)
 
 			if player == PLAYER_2 then
 				self:x( _screen.w-WideScale(27,84) )
@@ -29,7 +30,7 @@ return Def.ActorFrame{
 			self:diffuse(Color.White)
 			self:zoom( 1 )
 			self:horizalign(right)
-			self:xy( 180, 56)
+			self:xy( 175, 57)
 
 			if player == PLAYER_2 then
 				self:x( _screen.w-WideScale(27,84) )

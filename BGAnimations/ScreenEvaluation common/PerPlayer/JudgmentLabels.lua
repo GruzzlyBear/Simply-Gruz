@@ -19,7 +19,7 @@ local RadarCategories = {
 
 
 local t = Def.ActorFrame{
-	InitCommand=cmd(xy, 50, _screen.cy-24),
+	InitCommand=cmd(xy, 30, _screen.cy-24),
 	OnCommand=function(self)
 		if pn == PLAYER_2 then
 			self:x( self:GetX() * -1)
@@ -37,6 +37,7 @@ for index, label in ipairs(TNSNames) do
 			self:x( 28 )
 			self:y((index-1)*28 -16)
 			self:maxwidth(60)
+			self:zoom(0.75)
 		end
 	}
 end
@@ -45,9 +46,9 @@ end
 for index, label in ipairs(RadarCategories) do
 	t[#t+1] = LoadFont("_miso")..{
 		Text=label,
-		InitCommand=cmd(NoStroke;zoom,0.833; horizalign,right ),
+		InitCommand=cmd(NoStroke;zoom,0.75; horizalign,right ),
 		BeginCommand=function(self)
-			self:x( (pn == PLAYER_1 and -155) or 90 )
+			self:x( (pn == PLAYER_1 and -130) or 90 )
 			self:y((index-1)*28 + 41)
 		end
 	}

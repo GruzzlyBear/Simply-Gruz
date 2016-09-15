@@ -74,7 +74,7 @@ Grid[#Grid+1] = Def.Sprite{
 	Name="BackgroundBlocks",
 	Texture=THEME:GetPathB("ScreenSelectMusic", "overlay/StepsDisplayList/_block.png"),
 
-	InitCommand=cmd(diffuse, color("#182025") ),
+	InitCommand=cmd(diffuse, color("#000000") ),
 	OnCommand=function(self)
 		local width = self:GetWidth()
 		local height= self:GetHeight()
@@ -121,7 +121,7 @@ for RowNumber=1,GridRows do
 
 	Grid[#Grid+1] = Def.BitmapText{
 		Name="Meter_"..RowNumber,
-		Font="Common normal",
+		Font="_extrabold",
 
 		InitCommand=function(self)
 			local height = self:GetParent():GetChild("Blocks_"..RowNumber):GetHeight()

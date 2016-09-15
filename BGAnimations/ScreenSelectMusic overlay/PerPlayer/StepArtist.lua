@@ -55,7 +55,7 @@ return Def.ActorFrame{
 	--STEPS label
 	Def.BitmapText{
 		Font="_miso",
-		OnCommand=cmd(diffuse, color("#7f8c8d"); horizalign, left; x, 40; settext, "STEPS"; zoom, 0.7)
+		OnCommand=cmd(diffuse, color("#7f8c8d"); horizalign, left; x, 37; settext, "STEPS"; zoom, 0.7)
 	},
 
 	--stepartist text

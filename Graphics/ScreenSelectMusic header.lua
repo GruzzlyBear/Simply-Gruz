@@ -80,7 +80,7 @@ local t = Def.ActorFrame{
 		TextCommand=cmd(settext, StageText),
 		OnCommand=cmd(sleep,0.1; decelerate,0.33; diffusealpha,1),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_extrabold") .. {
 		Name="GroupText",
 		InitCommand=cmd(xy,SCREEN_WIDTH-10,15;halign,1;zoom,1;maxwidth,400;diffuse, color("#7f8c8d"));
 		BeginCommand=cmd(queuecommand,"Set");

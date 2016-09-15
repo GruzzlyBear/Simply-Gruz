@@ -6,7 +6,7 @@ return Def.ActorFrame{
 	},
 
 	-- song/course title text
-	LoadFont("_miso")..{
+	LoadFont("_extrabold")..{
 		InitCommand=cmd(xy,_screen.cx,65.5; maxwidth, 294 ;diffuse, color("#bdc3c7")),
 		OnCommand=function(self)
 			local songtitle = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayMainTitle()) or GAMESTATE:GetCurrentSong():GetDisplayMainTitle()
@@ -19,7 +19,7 @@ return Def.ActorFrame{
 
 	--fallback banner
 	LoadActor( THEME:GetPathB("ScreenSelectMusic", "overlay/colored_banners/banner" .. SL.Global.ActiveColorIndex .. " (doubleres).png"))..{
-		OnCommand=cmd(xy, _screen.cx, 121.5; zoom, 0.7; setsize,418,131;)
+		OnCommand=cmd(xy, _screen.cx, 130; zoom, 0.7; setsize,418,131;)
 	},
 
 	--song or course banner, if there is one
@@ -32,6 +32,6 @@ return Def.ActorFrame{
 				self:LoadFromSong( GAMESTATE:GetCurrentSong() )
 			end
 		end,
-		OnCommand=cmd(xy, _screen.cx, 121.5; setsize,418,131; zoom, 0.7 )
+		OnCommand=cmd(xy, _screen.cx, 130; setsize,418,131; zoom, 0.7 )
 	}
 }
