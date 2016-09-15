@@ -8,7 +8,7 @@ return Def.ActorFrame{
 		OnCommand=function(self)
 
 			self:y(_screen.cy-140)
-			self:x( (player == PLAYER_1 and 360) or 115 )
+			self:x( (player == PLAYER_1 and 365) or 115 )
 			self:halign(pn)
 			self:zoom(0.7)
 
@@ -26,25 +26,12 @@ return Def.ActorFrame{
 	},
 
 	-- colored square as the background for the difficulty meter
-	Def.Quad{
-		InitCommand=cmd(zoomto,30,30),
-		OnCommand=function(self)
-			self:y( _screen.cy-130 )
-			self:x( (player == PLAYER_1 and 340) or 134.5 )
-
-			local currentSteps = GAMESTATE:GetCurrentSteps(player)
-			if currentSteps then
-				local currentDifficulty = currentSteps:GetDifficulty()
-				self:diffuse( DifficultyColor(currentDifficulty) )
-			end
-		end
-	},
 
 	-- numerical difficulty meter
 	LoadFont("_big")..{
-		InitCommand=cmd(diffuse, Color.Black ),
+		InitCommand=cmd(diffuse, Color.White ),
 		OnCommand=function(self)
-			self:zoom( 0.6 )
+			self:zoom( 1.2 )
 			self:y( _screen.cy-130 )
 			self:maxwidth(35)
 			self:x( (player == PLAYER_1 and 340) or 134.5 )

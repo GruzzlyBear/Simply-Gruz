@@ -41,16 +41,16 @@ local meter = Def.ActorFrame{
 	-- // start meter proper //
 	Def.Quad{
 		Name="MeterFill";
-		InitCommand=cmd(zoomto,0,meterFillHeight; diffuse,PlayerColor(Player); horizalign, left),
+		InitCommand=cmd(zoomto,0,meterFillHeight; diffuse,color("#7f8c8d"); horizalign, left),
 		OnCommand=cmd(x, meterXOffset - meterFillLength/2),
 
 		-- check state of mind
 		HealthStateChangedMessageCommand=function(self,params)
 			if(params.PlayerNumber == Player) then
 				if(params.HealthState == 'HealthState_Hot') then
-					self:diffuse(color("1,1,1,1"))
+					self:diffuse(color("#bdc3c7"))
 				else
-					self:diffuse(PlayerColor(Player))
+					self:diffuse(color("#7f8c8d"))
 				end
 			end
 		end,
