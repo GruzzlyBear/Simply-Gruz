@@ -3,7 +3,7 @@
 local Player = ...
 
 local meterFillLength = 196
-local meterFillHeight = 18
+local meterFillHeight = 8
 local meterXOffset
 
 if Player == PLAYER_1 then
@@ -29,7 +29,7 @@ local meter = Def.ActorFrame{
 			self:visible(false)
 		end
 	end,
-	OnCommand=cmd(y, 20),
+	OnCommand=cmd(y, 53),
 
 	-- frame
 	-- Border(meterFillLength+4, meterFillHeight+4, 2)..{
