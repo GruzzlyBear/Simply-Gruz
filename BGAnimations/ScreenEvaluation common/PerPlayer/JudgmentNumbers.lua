@@ -68,7 +68,7 @@ for index, window in ipairs(TapNoteScores.Types) do
 			end
 		end,
 		BeginCommand=function(self)
-			self:x( TapNoteScores.x[pn] )
+			self:x( TapNoteScores.x[pn]+10 )
 			self:y((index-1)*35 -20)
 			self:targetnumber(number)
 		end

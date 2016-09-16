@@ -24,22 +24,23 @@ else
 	local t = Def.ActorFrame{
 		InitCommand=cmd(zoom, 0.3),
 		OnCommand=function(self)
-			self:x( (player == PLAYER_1 and -80) or 80 )
-			self:y( 54 )
+			self:x( (player == PLAYER_1 and 43) or 80 )
+			self:y( 160 )
+			self:horizalign (center)
 		end
 	}
 
 	if EarnedMachineRecord then
 		t[#t+1] = LoadFont("_big")..{
 			Text=string.format("Machine Record %i", highScoreIndex.Machine+1),
-			InitCommand=cmd(halign,0; xy,-110,-18; diffuse,PlayerColor(player); glowshift;effectcolor1,color("1,1,1,0"); effectcolor2,color("1,1,1,0.25")),
+			InitCommand=cmd(halign,0; xy,-110,-18; diffuse,color("#bdc3c7"); glowshift;effectcolor1,color("1,1,1,0"); effectcolor2,color("1,1,1,0.25")),
 		}
 	end
 
 	if EarnedPersonalRecord then
 		t[#t+1] = LoadFont("_big")..{
 			Text=string.format("Personal Record %i", highScoreIndex.Personal+1),
-			InitCommand=cmd(halign,0; xy,-110,24; diffuse,PlayerColor(player); glowshift;effectcolor1,color("1,1,1,0"); effectcolor2,color("1,1,1,0.25")),
+			InitCommand=cmd(halign,0; xy,-110,24; diffuse,color("#bdc3c7"); glowshift;effectcolor1,color("1,1,1,0"); effectcolor2,color("1,1,1,0.25")),
 		}
 	end
 

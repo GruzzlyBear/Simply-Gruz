@@ -1,6 +1,6 @@
 return Def.ActorFrame{
 	Def.Quad{
-		InitCommand=cmd(xy,-120,0;zoomto,4,31),
+		InitCommand=cmd(xy,-123,0;zoomto,3,31),
 		SetGradeCommand=function(self,params)
 			if params.Grade then
 				self:diffuse(color("#bdc3c7"))

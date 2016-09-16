@@ -1,13 +1,10 @@
 return Def.ActorFrame{
 
 	-- quad behind the song/course title text
-	Def.Quad{
-		InitCommand=cmd(diffuse,color("#000000"); xy,_screen.cx, 65.5; zoomto, 293,20),
-	},
 
 	-- song/course title text
-	LoadFont("_extrabold")..{
-		InitCommand=cmd(xy,_screen.cx,65.5; maxwidth, 294 ;diffuse, color("#bdc3c7")),
+	LoadFont("_big")..{
+		InitCommand=cmd(xy,SCREEN_WIDTH-70,40; maxwidth, 294 ;diffuse, color("#bdc3c7");halign,1;zoom,1),
 		OnCommand=function(self)
 			local songtitle = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayMainTitle()) or GAMESTATE:GetCurrentSong():GetDisplayMainTitle()
 
@@ -19,7 +16,7 @@ return Def.ActorFrame{
 
 	--fallback banner
 	LoadActor( THEME:GetPathB("ScreenSelectMusic", "overlay/colored_banners/banner" .. SL.Global.ActiveColorIndex .. " (doubleres).png"))..{
-		OnCommand=cmd(xy, _screen.cx, 130; zoom, 0.7; setsize,418,131;)
+		OnCommand=cmd(xy, _screen.cx+155, 128; zoom, 0.7; setsize,472,148;)
 	},
 
 	--song or course banner, if there is one
@@ -32,6 +29,6 @@ return Def.ActorFrame{
 				self:LoadFromSong( GAMESTATE:GetCurrentSong() )
 			end
 		end,
-		OnCommand=cmd(xy, _screen.cx, 130; setsize,418,131; zoom, 0.7 )
+		OnCommand=cmd(xy, _screen.cx+155, 128; setsize,472,148; zoom, 0.7 )
 	}
 }

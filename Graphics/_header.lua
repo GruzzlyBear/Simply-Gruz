@@ -1,10 +1,6 @@
 return Def.ActorFrame{
 	Name="Header",
-
-	Def.Quad{
-		InitCommand=cmd(zoomto, _screen.w, 32; vertalign, top; diffuse,0,0,0,1; x, _screen.cx),
-	},
-
+	
 	Def.BitmapText{
 		Name="HeaderText",
 		Font="Common normal",

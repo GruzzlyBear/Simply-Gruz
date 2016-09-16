@@ -16,7 +16,7 @@ end
 
 return LoadFont("Common Normal")..{
 	Text=stepartist,
-	InitCommand=cmd(zoom, 0.7; xy, 365,_screen.cy-125 ),
+	InitCommand=cmd(zoom, 0; xy, 70,_screen.cy-165 ),
 	OnCommand=function(self)
 		if player == PLAYER_1 then
 			self:x( self:GetX() * 1 )

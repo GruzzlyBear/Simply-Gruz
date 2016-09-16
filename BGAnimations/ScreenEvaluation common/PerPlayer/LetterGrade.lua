@@ -4,7 +4,7 @@ local playerStats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn)
 local grade = playerStats:GetGrade()
 
 return LoadActor(THEME:GetPathG("", "_grades/"..grade..".lua"), playerStats)..{
-	InitCommand=cmd(xy, 70, _screen.cy-134),
+	InitCommand=cmd(xy, -50, _screen.cy-120),
 	OnCommand=function(self)
 		self:zoom(0.4)
 		if pn == PLAYER_1 then

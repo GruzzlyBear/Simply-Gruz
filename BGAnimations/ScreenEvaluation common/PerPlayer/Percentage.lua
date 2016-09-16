@@ -12,12 +12,6 @@ return Def.ActorFrame{
 		self:y( _screen.cy-26 )
 		self:x( (pn == PLAYER_1 and -70) or 70 )
 	end,
-
-	-- dark background quad behind player percent score
-	Def.Quad{
-		InitCommand=cmd(diffuse, color("#000000"); zoomto, 160,60 )
-	},
-
 	LoadFont("_big")..{
 		Text=percent,
 		Name="Percent",

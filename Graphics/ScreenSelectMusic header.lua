@@ -64,9 +64,6 @@ local t = Def.ActorFrame{
 		end
 	end,
 
-	Def.Quad{
-		InitCommand=cmd(zoomto, _screen.w, 32; vertalign, top; diffuse,0,0,0,1; x, _screen.cx),
-	},
 
 	LoadFont("Common Normal")..{
 		Name="HeaderText",
@@ -82,12 +79,13 @@ local t = Def.ActorFrame{
 	},
 	LoadFont("_extrabold") .. {
 		Name="GroupText",
-		InitCommand=cmd(xy,SCREEN_WIDTH-10,15;halign,1;zoom,1;maxwidth,400;diffuse, color("#7f8c8d"));
+		InitCommand=cmd(xy,SCREEN_WIDTH-10,12;halign,1;zoom,0.6;maxwidth,400;shadowlength,1;diffuse, color("#7f8c8d"));
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong()
+			local group = song:GetGroupName()
 			if song ~= nil then
-				self:settext(song:GetGroupName()) 
+				self:settext(string.upper(group))
 			else
 				if SCREENMAN:GetTopScreen():GetName() == "ScreenSelectMusic" then
 					local musicwheel = SCREENMAN:GetTopScreen():GetMusicWheel();

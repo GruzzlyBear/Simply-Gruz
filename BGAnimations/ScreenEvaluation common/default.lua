@@ -16,6 +16,7 @@ local t = Def.ActorFrame{
 	LoadActor("./RateMod.lua"),
 
 	LoadActor("./ScoreVocalization.lua")
+	
 }
 
 
@@ -47,7 +48,9 @@ for pn in ivalues(Players) do
 		LoadActor("./PerPlayer/Difficulty.lua", pn),
 
 		-- Record Texts
-		LoadActor("./PerPlayer/RecordTexts.lua", pn)
+		LoadActor("./PerPlayer/RecordTexts.lua", pn),
+		
+		
 	}
 
 	-- the lower half of ScreenEvaluation
@@ -60,7 +63,7 @@ for pn in ivalues(Players) do
 				self:x(_screen.cx)
 			else
 				if pn == PLAYER_1 then
-					self:x(_screen.cx)
+					self:x(_screen.cx + 155)
 				elseif pn == PLAYER_2 then
 					self:x(_screen.cx + 155)
 				end
@@ -69,9 +72,8 @@ for pn in ivalues(Players) do
 
 		-- background quad for player stats
 		Def.Quad{
-			InitCommand=cmd(diffuse,color("#000000"); y,_screen.cy+34; zoomto, 300,180 )
+			InitCommand=cmd(diffuse,color("#000000"); y,_screen.cy+240; zoomto, 331,600 )
 		},
-
 		-- labels (like "FANTASTIC, MISS, holds, rolls, etc.")
 		LoadActor("./PerPlayer/JudgmentLabels.lua", pn),
 
@@ -89,7 +91,9 @@ for pn in ivalues(Players) do
 		LoadActor("./PerPlayer/PlayerModifiers.lua", pn),
 
 		-- was this player disqualified from ranking?
-		LoadActor("./PerPlayer/Disqualified.lua", pn)
+		LoadActor("./PerPlayer/Disqualified.lua", pn),
+		
+		
 		
 	}
 end

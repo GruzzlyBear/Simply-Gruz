@@ -7,10 +7,10 @@ return Def.ActorFrame{
 	LoadFont("_miso")..{
 		OnCommand=function(self)
 
-			self:y(_screen.cy-140)
-			self:x( (player == PLAYER_1 and 365) or 115 )
-			self:halign(pn)
-			self:zoom(0.7)
+			self:y(_screen.cy-176)
+			self:x( (player == PLAYER_1 and SCREEN_WIDTH-200) or 115 )
+			self:horizalign(center)
+			self:zoom(0.6)
 
 			local currentSteps = GAMESTATE:GetCurrentSteps(player)
 
@@ -32,9 +32,10 @@ return Def.ActorFrame{
 		InitCommand=cmd(diffuse, Color.White ),
 		OnCommand=function(self)
 			self:zoom( 1.2 )
-			self:y( _screen.cy-130 )
+			self:y( _screen.cy-200 )
 			self:maxwidth(35)
-			self:x( (player == PLAYER_1 and 340) or 134.5 )
+			self:x( (player == PLAYER_1 and SCREEN_WIDTH-200) or 134.5 )
+			self:horizalign(center)
 
 			local meter
 			if GAMESTATE:IsCourseMode() then
