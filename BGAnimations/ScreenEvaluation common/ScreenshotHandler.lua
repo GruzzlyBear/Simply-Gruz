@@ -10,7 +10,7 @@ return Def.Sprite{
 			self:Center()
 			self:zoomto(_screen.w, _screen.h)
 			local MusicRate = SL.Global.ActiveModifiers.MusicRate
-			local songtitle = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayMainTitle()) or GAMESTATE:GetCurrentSong():GetDisplayFullTitle()
+			local songtitle = (GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayMainTitle()) or GAMESTATE:GetCurrentSong():GetDisplayMainTitle()
 			local songtitlealpha = songtitle:gsub("[*?/]",{["*"] = "", ["?"] = "", ["/"] = "",})
 			local group = (GAMESTATE:GetCurrentSong():GetGroupName())
 			local p1d = ToEnumShortString(GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty());
@@ -19,7 +19,7 @@ return Def.Sprite{
 			-- organize Screenshots take using Simply Love into directories, like...
 			-- ./Screenshots/Simply_Love/2015/06-June/2015-06-05_121708.png
 			local prefix = "SimplyGruz/" .. "/"
-			prefix = prefix .. group .. "/" .. songtitlealpha .. "_(" .. p1d .. ")" .. "/" .. rate .. "/"
+			prefix = prefix .. group .. "/" .. songtitlealpha .. "_(" .. p1d .. ")" .. "_" .. rate .. "/"
 
 			local success, path = SaveScreenshot(params.PlayerNumber, false, true, prefix)
 			if success and path then
