@@ -9,8 +9,6 @@ Please look at the [wiki](https://github.com/GruzzlyBear/Simply-Gruz/wiki) for m
 # Download:
 [Latest](https://github.com/GruzzlyBear/Simply-Gruz/archive/master.zip) - for newest updates (note downloading when drastic changes are being made may cause the theme to have issues or possibly not even work at all. it is recommended to downloaded a release of the theme, where most bugs have been checked and the theme is [mostly] guaranteed to work!)
 
-[Stable (v2.0)](https://github.com/GruzzlyBear/Simply-Gruz/archive/v2.0.zip) - for stability
-
-[Old (v1.0)](https://github.com/GruzzlyBear/Simply-Gruz/archive/v1.0.zip) - for hipsters who like using older versions of things (aka the entire stepmania community lmao)
+[Stable (v2.1)](https://github.com/GruzzlyBear/Simply-Gruz/archive/v2.1.zip) - for stability
 
 For other releases, go to the releases tab.
