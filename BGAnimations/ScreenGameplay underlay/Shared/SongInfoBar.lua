@@ -19,7 +19,7 @@ return Def.ActorFrame{
 	-- Song Title
 	LoadFont("_big")..{
 		Name="SongTitle",
-		InitCommand=cmd(zoom,0.6; shadowlength,0.6; maxwidth, 330; xy, SCREEN_WIDTH-210, 18;horizalign,left ),
+		InitCommand=cmd(zoom,0.6; shadowlength,0.6; maxwidth, 330; xy, SCREEN_WIDTH-208, 18;horizalign,left ),
 		CurrentSongChangedMessageCommand=cmd(playcommand, "Update"),
 		UpdateCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong()

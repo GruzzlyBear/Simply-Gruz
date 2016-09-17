@@ -5,34 +5,21 @@ local t = Def.ActorFrame{
 	--I'ma call it the fuck you people with fucking huge cdtitles script, With Love - Jousway
 	--Update, Added a BAD NPS system	
 	--NPS Calculator/Display
-	LoadFont("Common Normal") .. {
-		Text="NOTES PER SECOND";
-		InitCommand=cmd(x,SCREEN_CENTER_X-90;y,SCREEN_CENTER_Y-62;zoom,0.75;diffuse,color("#7f8c8d");strokecolor,color("#7f8c8d");halign,1);
-	};
 	LoadFont("_big") .. {
 		Name="P1NPS";
-		InitCommand=cmd(x,SCREEN_CENTER_X-10;y,SCREEN_CENTER_Y-62;zoom,0.75;halign,1;diffuse,color("#bdc3c7");strokecolor,color("Outline"));
+		InitCommand=cmd(x,SCREEN_CENTER_X-10;y,SCREEN_CENTER_Y-65;zoom,0.75;halign,1;shadowlength,1;diffuse,color("#bdc3c7");strokecolor,color("Outline"));
 	};
-	LoadFont("Common Normal") .. {
-		Name="P2NPS";
-		InitCommand=cmd(y,SCREEN_CENTER_Y-56;zoom,0.75;diffuse,color("#0089cf");strokecolor,color("Outline"));
-	};
-
 	--CDTitle Resizer/Container
 	Def.ActorFrame{
 		Name="CDTContainer";
-		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-96;zoomy,0;sleep,0.5;decelerate,0.25;zoomy,1);
+		OnCommand=cmd(x,SCREEN_CENTER_X-40;y,40;zoomy,0;sleep,0.5;decelerate,0.25;zoomy,1);
 		OffCommand=cmd(bouncebegin,0.15;zoomx,0);
 		-- LoadActor(THEME:GetPathG("CDTitle", "Con")) .. {
 			-- InitCommand=cmd(diffuse,Color("Orange"));
 		-- };
-		LoadFont("Common Normal") .. {
-			Text="SIMFILE BY";
-			InitCommand=cmd(zoom,0.7;y,-338;x,-100;diffuse,1,1,1,1;shadowlength,1;halign,1;diffuse,color("#7f8c8d")); -- strokecolor,Color("Black")
-		};
 		Def.Sprite {
 			Name="CDTitle";
-			InitCommand=cmd(y,-340;x,-50);
+			InitCommand=cmd(y,0;x,0);
 			--OnCommand=cmd(draworder,106;shadowlength,1;zoom,0.75;diffusealpha,1;zoom,0;bounceend,0.35;zoom,0.75;spin;effectmagnitude,0,180,0);
 		};
 	};
@@ -77,16 +64,16 @@ local function Update(self)
 		cdtitle:visible(false);
 	end;
 	
-	if height >= 60 and width >= 80 then
-		if height*(80/60) >= width then
-		cdtitle:zoom(60/height);
+	if height >= 40 and width >= 40 then
+		if height*(40/40) >= width then
+		cdtitle:zoom(40/height);
 		else
-		cdtitle:zoom(80/width);
+		cdtitle:zoom(40/width);
 		end;
-	elseif height >= 60 then
-		cdtitle:zoom(60/height);
-	elseif width >= 80 then
-		cdtitle:zoom(80/width);
+	elseif height >= 40 then
+		cdtitle:zoom(40/height);
+	elseif width >= 40 then
+		cdtitle:zoom(40/width);
 	else 
 		cdtitle:zoom(1);
 	end;

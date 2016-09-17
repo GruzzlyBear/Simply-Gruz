@@ -262,7 +262,7 @@ pd[#pd+1] = Def.BitmapText{
 pd[#pd+1] = Def.BitmapText{
 	Font="_big",
 	Name="PlayerHighScore",
-	InitCommand=cmd(x, highscoreX+90; y, 170; zoom, 0.9; diffuse, color("#bdc3c7"); horizalign, right )
+	InitCommand=cmd(x, highscoreX+90; y, 173; zoom, 0.9; diffuse, color("#bdc3c7"); horizalign, right )
 }
 
 --PLAYER PROFILE highscore name

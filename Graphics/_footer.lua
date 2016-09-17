@@ -3,6 +3,6 @@ return Def.Quad{
 	InitCommand=function(self)
 		self:draworder(90)
 		self:zoomto(_screen.w, 32):vertalign(bottom):y(32)
-		self:diffuse(0,0,0,1)
+		self:diffuse(0,0,0,0)
 	end
 }
