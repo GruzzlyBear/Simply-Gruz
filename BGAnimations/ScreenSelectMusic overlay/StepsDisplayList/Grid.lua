@@ -1,6 +1,6 @@
-local GridColumns = 20
+local GridColumns = 30
 local GridRows = 5
-local GridZoomX = 0.39
+local GridZoomX = 0.25
 local BlockZoomY = 0.275
 local StepsToDisplay, SongOrCourse, StepsOrTrails
 
