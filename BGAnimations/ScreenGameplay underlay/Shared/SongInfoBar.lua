@@ -7,7 +7,7 @@ return Def.ActorFrame{
 		OnCommand=cmd(decelerate,0.2; diffusealpha,1),
 
 		Def.SongMeterDisplay {
-			StreamWidth=195,
+			StreamWidth=196,
 			Stream=Def.Quad{ 
 				InitCommand=cmd(zoomy,9; diffuse,color("#bdc3c7"))
 			}

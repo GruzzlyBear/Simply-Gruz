@@ -90,7 +90,7 @@ else
 
 		LoadFont("_big")..{
 			Name="Number",
-			OnCommand=cmd(shadowlength,1; vertalign,middle;y,-40 ),
+			OnCommand=cmd(shadowlength,1; vertalign,middle;y,-100 ),
 			ChangeColorCommand=function(self, params)
 				self:diffuseshift():effectperiod(0.8)
 				self:effectcolor1( color(params.Color1) )

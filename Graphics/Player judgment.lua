@@ -27,7 +27,7 @@ local t = Def.ActorFrame {
 
 	 Def.Sprite{
 		Name="JudgmentWithOffsets",
-		InitCommand=cmd(pause;visible,false;),
+		InitCommand=cmd(pause;visible,false),
 		OnCommand=function(self)
 
 			-- if we are on ScreenEdit, judgment font is always "Love"
@@ -67,7 +67,7 @@ local t = Def.ActorFrame {
 
 		-- begin commands
 		judgmentSet:visible( true )
-		judgmentSet:y(-40)
+		judgmentSet:y(-115)
 		judgmentSet:setstate( frame )
 
 		-- frame0 is like (-fantastic)

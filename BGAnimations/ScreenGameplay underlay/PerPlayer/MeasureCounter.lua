@@ -70,7 +70,7 @@ if mods.MeasureCounter and mods.MeasureCounter ~= "None" then
 			local NumColumns = GAMESTATE:GetCurrentStyle():ColumnsPerPlayer()
 
 			self:zoom(0.6)
-				:xy( SCREEN_CENTER_X, _screen.cy -100 )
+				:xy( SCREEN_CENTER_X, _screen.cy -90 )
 				:horizalign(center)
 				:shadowlength(1)
 		end
