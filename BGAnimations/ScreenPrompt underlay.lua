@@ -7,7 +7,7 @@ return Def.ActorFrame{
 	
 	-- the BG for the prompt itself
 	Def.Quad {
-		InitCommand=cmd(xy,_screen.cx, _screen.cy-56; zoomto, _screen.w*0.75, _screen.cy*0.5; diffuse,GetCurrentColor(););
+		InitCommand=cmd(xy,_screen.cx, _screen.cy-56; zoomto, _screen.w*0.75, _screen.cy*0.5; diffuse,color("#000000"););
 	};
 	-- white border
 	Border(_screen.w*0.75, _screen.cy*0.5, 2) .. {

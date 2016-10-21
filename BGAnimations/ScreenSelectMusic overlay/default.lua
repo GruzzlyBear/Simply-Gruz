@@ -7,7 +7,7 @@ local t = Def.ActorFrame{
 	--NPS Calculator/Display
 	LoadFont("_big") .. {
 		Name="P1NPS";
-		InitCommand=cmd(x,SCREEN_CENTER_X-10;y,SCREEN_CENTER_Y-65;zoom,0.75;halign,1;shadowlength,1;diffuse,color("#bdc3c7");strokecolor,color("Outline"));
+		InitCommand=cmd(x,SCREEN_CENTER_X-80;y,45;zoom,0.75;halign,1;shadowlength,1;diffuse,color("#bdc3c7");strokecolor,color("Outline"));
 	};
 	--CDTitle Resizer/Container
 	Def.ActorFrame{
@@ -42,6 +42,7 @@ local files = {
 	"./StepsDisplayList/Grid.lua",
 	-- a folder of Lua files to be loaded twice (once for each player)
 	"./PerPlayer",
+	"../searchbar"
 
 }
 

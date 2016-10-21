@@ -2,12 +2,12 @@
 -- life meter.
 local Player = ...
 
-local meterFillLength = 196
+local meterFillLength = 208
 local meterFillHeight = 8
 local meterXOffset
 
 if Player == PLAYER_1 then
-	meterXOffset = SCREEN_WIDTH-110
+	meterXOffset = SCREEN_CENTER_X
 elseif Player == PLAYER_2 then
 	meterXOffset = _screen.cx + WideScale(238, 288)
 end
@@ -29,7 +29,7 @@ local meter = Def.ActorFrame{
 			self:visible(false)
 		end
 	end,
-	OnCommand=cmd(y, 53),
+	OnCommand=cmd(y,12),
 
 	-- frame
 	-- Border(meterFillLength+4, meterFillHeight+4, 2)..{
@@ -41,16 +41,16 @@ local meter = Def.ActorFrame{
 	-- // start meter proper //
 	Def.Quad{
 		Name="MeterFill";
-		InitCommand=cmd(zoomto,0,meterFillHeight; diffuse,color("#7f8c8d"); horizalign, left),
+		InitCommand=cmd(zoomto,0,meterFillHeight; diffuse,color("#111111"); horizalign, left),
 		OnCommand=cmd(x, meterXOffset - meterFillLength/2),
 
 		-- check state of mind
 		HealthStateChangedMessageCommand=function(self,params)
 			if(params.PlayerNumber == Player) then
 				if(params.HealthState == 'HealthState_Hot') then
-					self:diffuse(color("#bdc3c7"))
+					self:diffuse(color("#222222"))
 				else
-					self:diffuse(color("#7f8c8d"))
+					self:diffuse(color("#111111"))
 				end
 			end
 		end,
@@ -77,9 +77,9 @@ local meter = Def.ActorFrame{
 		HealthStateChangedMessageCommand=function(self,params)
 			if(params.PlayerNumber == Player) then
 				if(params.HealthState == 'HealthState_Hot') then
-					self:diffusealpha(1)
+					self:diffusealpha(0)
 				else
-					self:diffusealpha(0.2)
+					self:diffusealpha(0)
 				end
 			end
 		end,

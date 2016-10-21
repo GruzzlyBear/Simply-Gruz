@@ -21,10 +21,10 @@ if SL[ToEnumShortString(player)].ActiveModifiers.SubtractiveScoring then
   local hns
 
   return Def.BitmapText{
-    Font="_miso",
+    Font="_big",
     InitCommand=function(self)
       self:horizalign(center)
-        :diffuse(color("#ffffff")):zoom(1)
+        :diffuse(color("#ffffff")):zoom(0.6)
         :xy( SCREEN_CENTER_X, 30 )
     end,
 
@@ -60,7 +60,7 @@ if SL[ToEnumShortString(player)].ActiveModifiers.SubtractiveScoring then
           -- increment for the first ten
           w2_count = w2_count + 1
           -- and specificy literal W2 count
-          self:settext(w2_count .. "ex")
+          self:settext(w2_count .. "p")
         end
       -- else if this wouldn't subtract from percentage (fan or mine miss)
       elseif (tns ~= "W1" and tns ~= "AvoidMine") or
@@ -81,7 +81,7 @@ if SL[ToEnumShortString(player)].ActiveModifiers.SubtractiveScoring then
         local score = current_possible_dp - actual_dp
         score = ((possible_dp - score) / possible_dp) * 100
 
-        self:settext(string.format("%.2f", score))
+        self:settext(string.format("%.2f", score) .. "%")
       end
     end
   }

@@ -4,7 +4,7 @@ local t = Def.ActorFrame{
 		if IsUsingWideScreen() then
 			self:xy(_screen.cx - 170, _screen.cy - 28)
 		else
-			self:xy(_screen.cx - 165, _screen.cy - 28)
+			self:xy(_screen.cx - 165, _screen.cy - 10)
 		end
 	end,
 

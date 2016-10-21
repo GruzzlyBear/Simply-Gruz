@@ -73,15 +73,15 @@ local t = Def.ActorFrame {
 		-- frame0 is like (-fantastic)
 		-- frame1 is like (fantastic-)
 		if frame == 0 or frame == 1 then
-			judgmentSet:zoom(0.85)
+			judgmentSet:zoom(1)
 		else
-			judgmentSet:zoom(0.9)
+			judgmentSet:zoom(1)
 		end
 	
 
-		judgmentSet:decelerate(0.1)
-		judgmentSet:zoom(0.8)
-		judgmentSet:sleep(1)
+		judgmentSet:decelerate(0)
+		judgmentSet:zoom(1)
+		judgmentSet:sleep(0.5)
 		judgmentSet:accelerate(0)
 		judgmentSet:zoom(0)
 	end
