@@ -1,4 +1,3 @@
-![Alt Text](http://i.imgur.com/pYQPXWS.png)
 NOTE: This theme has stopped development. Please use the new Etterna Project build/theme, it's better anyways. The theme still works on the latest builds of Etterna (let me know if it breaks)
 
 Simply Gruz - Simply Love for the discerning keysmasher.
